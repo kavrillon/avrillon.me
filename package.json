@@ -1,0 +1,9 @@
+{
+  "name": "kavrillon.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "repository": "git@github.com:kavrillon/kavrillon.github.io.git",
+  "author": "Kevin Avrillon <kevin.avrillon@gmail.com>",
+  "license": "MIT"
+}
