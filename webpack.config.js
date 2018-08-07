@@ -4,6 +4,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const devMode = process.env.NODE_ENV !== "production";
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
   devServer: {
@@ -52,6 +53,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist")
   },
   plugins: [
+    new CleanWebpackPlugin(["dist"]),
     new ExtractTextPlugin({
       filename: devMode ? "bundle.css" : "bundle.[hash].css",
       allChunks: true
