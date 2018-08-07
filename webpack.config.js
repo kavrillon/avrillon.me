@@ -60,6 +60,15 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: "index.html",
+      minify: devMode
+        ? false
+        : {
+            collapseWhitespace: true,
+            removeComments: true,
+            removeRedundantAttributes: true,
+            removeScriptTypeAttributes: true,
+            removeStyleLinkTypeAttributes: true
+          },
       template: "src/index.html"
     })
   ]
