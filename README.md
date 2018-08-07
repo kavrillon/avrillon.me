@@ -1,6 +1,6 @@
 TODO:
 
-- optim HTML
+- gzip compression ?
 - prettier
 - postcss avec autoprefixer
 - select font
@@ -11,3 +11,4 @@ TODO:
 - check A11Y
 - check W3C
 - check perf
+- tests size compressed/not compressed
