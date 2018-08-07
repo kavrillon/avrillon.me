@@ -11,7 +11,7 @@ module.exports = {
     contentBase: "./dist",
     port: 9000
   },
-  devtool: devMode ? "inline-source-map" : false,
+  devtool: devMode ? "source-map" : false,
   entry: ["./src/index.js", "./src/index.scss"],
   mode: devMode ? "development" : "production",
   module: {
