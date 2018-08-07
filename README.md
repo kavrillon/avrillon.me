@@ -1,8 +1,9 @@
 TODO:
 
 - gzip compression ?
-- prettier
 - postcss avec autoprefixer
+- add linter
+- add ts
 - select font
 - design
 - select favicon
