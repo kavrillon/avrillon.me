@@ -1,8 +1,10 @@
 TODO:
 
-- dom checker ? A11y, etc.
-- postcss avec autoprefixer
+- live deploy (with release ?)
+- critical css
 - gzip compression ?
+- dom checker ? A11y, etc.
+- Google Analytics
 - select font
 - design
 - select favicon

@@ -27,6 +27,9 @@ module.exports = {
               }
             },
             {
+              loader: "postcss-loader"
+            },
+            {
               loader: "sass-loader", // compiles Sass to CSS, using Node Sass by default
               options: {
                 sourceMap: true
