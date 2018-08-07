@@ -7,6 +7,7 @@
   "author": "Kevin Avrillon <kevin.avrillon@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
     "extract-text-webpack-plugin": "4.0.0-alpha.0",
     "html-webpack-plugin": "^3.2.0",
