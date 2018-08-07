@@ -1,6 +1,7 @@
 TODO:
 
-- build prod
+- optim HTML
+- add clean webpack plugin
 - prettier
 - postcss avec autoprefixer
 - select font
