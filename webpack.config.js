@@ -1,15 +1,18 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const devMode = process.env.NODE_ENV !== "production";
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
-  devtool: "source-map",
-  entry: ["./src/index.js", "./src/index.scss"],
-  output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "dist")
+  devServer: {
+    contentBase: "./dist",
+    port: 9000
   },
-  mode: "development",
+  devtool: devMode ? "inline-source-map" : false,
+  entry: ["./src/index.js", "./src/index.scss"],
+  mode: devMode ? "development" : "production",
   module: {
     rules: [
       {
@@ -33,18 +36,29 @@ module.exports = {
       }
     ]
   },
+  optimization: {
+    minimize: devMode ? false : true,
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  },
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist")
+  },
   plugins: [
     new ExtractTextPlugin({
-      filename: "bundle.css",
+      filename: devMode ? "bundle.css" : "bundle.[hash].css",
       allChunks: true
     }),
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: "src/index.html"
     })
-  ],
-  serve: {
-    open: true,
-    port: 9000
-  }
+  ]
 };
