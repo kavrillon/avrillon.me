@@ -1,6 +1,7 @@
 TODO:
 
 - build prod
+- prettier
 - postcss avec autoprefixer
 - select font
 - design
