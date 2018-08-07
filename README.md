@@ -1,9 +1,8 @@
 TODO:
 
-- gzip compression ?
+- dom checker ? A11y, etc.
 - postcss avec autoprefixer
-- add linter
-- add ts
+- gzip compression ?
 - select font
 - design
 - select favicon
