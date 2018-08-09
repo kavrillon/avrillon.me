@@ -1,7 +1,6 @@
 TODO:
 
 - live deploy (with release ?)
-- critical css
 - gzip compression ?
 - dom checker ? A11y, etc.
 - Google Analytics
