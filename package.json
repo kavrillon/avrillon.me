@@ -35,6 +35,7 @@
     "lint": "npm-run-all -p lint:*",
     "lint:prettier": "yarn prettier -l 'src/**/*.{js,md,json,scss}'",
     "lint:scss": "stylelint 'src/**/*.scss'",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "start:prod": "NODE_ENV=production webpack-dev-server"
   }
 }
