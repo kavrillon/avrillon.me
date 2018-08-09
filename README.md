@@ -1,7 +1,6 @@
 TODO:
 
 - live deploy (with release ?)
-- gzip compression ?
 - dom checker ? A11y, etc.
 - Google Analytics
 - select font
