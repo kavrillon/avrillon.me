@@ -1,10 +1,13 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const devMode = process.env.NODE_ENV !== "production";
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin");
+const HtmlWebpackExcludeAssetsPlugin = require("html-webpack-exclude-assets-plugin");
+
+const devMode = process.env.NODE_ENV !== "production";
 
 module.exports = {
   devServer: {
@@ -12,7 +15,11 @@ module.exports = {
     port: 9000
   },
   devtool: devMode ? "source-map" : false,
-  entry: ["./src/index.js", "./src/index.scss"],
+  entry: {
+    app: "./src/index.js",
+    critical: "./src/critical.scss",
+    styles: "./src/index.scss"
+  },
   mode: devMode ? "development" : "production",
   module: {
     rules: [
@@ -52,16 +59,17 @@ module.exports = {
     ]
   },
   output: {
-    filename: devMode ? "bundle.js" : "bundle.[hash].js",
+    filename: devMode ? "[name].js" : "[name].[hash].js",
     path: path.resolve(__dirname, "dist")
   },
   plugins: [
     new CleanWebpackPlugin(["dist"]),
     new ExtractTextPlugin({
-      filename: devMode ? "bundle.css" : "bundle.[hash].css",
-      allChunks: true
+      filename: devMode ? "[name].css" : "[name].[hash].css"
     }),
     new HtmlWebpackPlugin({
+      excludeAssets: [/critical.*.js/, /styles.*.js/],
+      inlineSource: /critical.*.css$/,
       filename: "index.html",
       minify: devMode
         ? false
@@ -73,6 +81,8 @@ module.exports = {
             removeStyleLinkTypeAttributes: true
           },
       template: "src/index.html"
-    })
+    }),
+    new HtmlWebpackInlineSourcePlugin(),
+    new HtmlWebpackExcludeAssetsPlugin()
   ]
 };
