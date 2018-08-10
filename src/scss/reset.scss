@@ -1,0 +1,21 @@
+@import "scss/variables";
+@import "scss/animations";
+
+html {
+  font-family: $font-family-default;
+  font-size: $font-size-default-min;
+
+  @media (min-width: $sm) {
+    font-size: $font-size-default;
+  }
+}
+
+body {
+  margin: 0;
+  background: $white;
+}
+
+a {
+  text-decoration: none;
+  color: $white;
+}
