@@ -1,6 +1,5 @@
 TODO:
 
-- image webpack
 - live deploy (with release ?)
 - dom checker ? A11y, etc.
 - Google Analytics
@@ -12,3 +11,4 @@ TODO:
 - check W3C
 - check perf
 - tests size compressed/not compressed
+- overwrite text selection

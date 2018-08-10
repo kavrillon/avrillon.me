@@ -8,7 +8,7 @@
 @mixin title {
   font-size: $font-size-title-min;
 
-  @media (min-width: $sm) {
+  @media (min-width: $xs) {
     font-size: $font-size-title;
   }
 }
