@@ -1,6 +1,136 @@
-@import "variables";
+@import "scss/mixins";
+@import "scss/reset";
+@import "scss/variables";
 
-body {
+.splash {
+  position: relative;
+  z-index: 1;
   margin: 0;
-  background: $color-bg;
+  background: $color-brand-3;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  color: $white;
+
+  &__top {
+    @include fadein;
+
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 3;
+    padding: 0 $padding-default;
+    height: $splash-top-height-min;
+
+    &__title {
+      @include title;
+    }
+
+    &__baseline {
+      padding: $padding-default 0 0;
+    }
+
+    &__contact {
+      position: relative;
+      margin: $padding-default 0
+        (($splash-footer-icon-height-min / 2) + $splash-footer-icon-padding) +
+        $padding-default;
+      padding-top: $padding-default;
+
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        z-index: 3;
+        margin-left: -5vh;
+        background: $white;
+        width: 10vh;
+        height: 1px;
+        content: " ";
+      }
+
+      @media (min-width: $sm) {
+        margin: $padding-default * 2 0
+          (($splash-footer-icon-height / 2) + $splash-footer-icon-padding) +
+          $padding-default * 2;
+      }
+    }
+
+    @media (min-width: $sm) {
+      height: $splash-top-height;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    background: $white;
+    padding: 0 $padding-default;
+    height: 100vh - $splash-top-height-min;
+    color: $color-brand-5;
+
+    &__social {
+      position: absolute;
+      top: -($splash-footer-icon-height-min / 2 + $splash-footer-icon-padding);
+      right: 0;
+      left: 0;
+      z-index: 5;
+
+      &__item {
+        display: inline-block;
+        margin: 0 5px;
+        border-radius: 50%;
+        background: $white;
+        padding: $splash-footer-icon-padding;
+        width: $splash-footer-icon-height-min;
+        height: $splash-footer-icon-height-min;
+
+        &__link {
+          @include fadein;
+
+          display: block;
+          transition: transform 200ms;
+          outline: 0;
+          fill: $color-brand-3;
+
+          &:hover,
+          &:focus {
+            transform: scale(0.9);
+            fill: $color-brand-5;
+          }
+        }
+
+        @media (min-width: $sm) {
+          margin: 0 30px;
+          width: $splash-footer-icon-height;
+          height: $splash-footer-icon-height;
+        }
+      }
+
+      @media (min-width: $sm) {
+        top: -($splash-footer-icon-height / 2 + $splash-footer-icon-padding);
+      }
+    }
+
+    &__contact {
+      @include fadein;
+      @include title;
+
+      margin-top: 15px;
+
+      @media (min-width: $sm) {
+        margin-top: 30px;
+      }
+    }
+
+    @media (min-width: $sm) {
+      height: 100vh - $splash-top-height;
+    }
+  }
 }

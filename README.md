@@ -1,10 +1,10 @@
 TODO:
 
+- image webpack
 - live deploy (with release ?)
 - dom checker ? A11y, etc.
 - Google Analytics
 - select font
-- design
 - select favicon
 - create contact@avrillon.me
 - check SEO
