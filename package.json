@@ -33,8 +33,9 @@
   },
   "scripts": {
     "build": "yarn run build:prod",
-    "build:prod": "NODE_ENV=production webpack",
     "build:dev": "webpack",
+    "build:prod": "NODE_ENV=production webpack",
+    "deploy": "bash scripts/deploy.sh",
     "format": "prettier --write 'src/**/*.{js,md,json,scss}' && stylelint 'src/**/*.scss' --fix",
     "lint": "npm-run-all -p lint:*",
     "lint:prettier": "yarn prettier -l 'src/**/*.{js,md,json,scss}'",
