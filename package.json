@@ -32,12 +32,15 @@
     "webpack-dev-server": "^3.1.5"
   },
   "scripts": {
-    "build": "NODE_ENV=production webpack",
+    "build": "yarn run build:prod",
+    "build:prod": "NODE_ENV=production webpack",
+    "build:dev": "webpack",
     "format": "prettier --write 'src/**/*.{js,md,json,scss}' && stylelint 'src/**/*.scss' --fix",
     "lint": "npm-run-all -p lint:*",
     "lint:prettier": "yarn prettier -l 'src/**/*.{js,md,json,scss}'",
     "lint:scss": "stylelint 'src/**/*.scss'",
-    "start": "webpack-dev-server",
+    "start": "yarn start:dev",
+    "start:dev": "webpack-dev-server",
     "start:prod": "NODE_ENV=production webpack-dev-server"
   }
 }
