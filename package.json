@@ -1,6 +1,6 @@
 {
   "name": "kavrillon.github.io",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "private": true,
   "repository": "git@github.com:kavrillon/kavrillon.github.io.git",
@@ -41,6 +41,7 @@
     "lint": "npm-run-all -p lint:*",
     "lint:prettier": "yarn prettier -l 'src/**/*.{js,md,json,scss}'",
     "lint:scss": "stylelint 'src/**/*.scss'",
+    "release": "bash scripts/release.sh",
     "start": "yarn start:dev",
     "start:dev": "webpack-dev-server",
     "start:prod": "NODE_ENV=production webpack-dev-server"
