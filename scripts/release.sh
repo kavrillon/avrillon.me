@@ -50,7 +50,7 @@ yarn build:prod
 
 echo ""
 echo "##-- Upgrading Project version --##"
-tag=`yarn version --new-version $1 --no-git-tag-version`
+tag=`yarn version --new-version $1 --no-git-tag-version | sed -n -e 's/^info New version: \(.*\)/\1/p'`
 
 git add package.json
 git commit -m "chore(): release new version ${tag}"
