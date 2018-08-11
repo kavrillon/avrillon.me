@@ -9,6 +9,8 @@ gtag("config", "UA-123741397-1");
 // Load
 window.onload = function init() {
   loadImages();
+
+  loadEvents();
 };
 
 // Methods
@@ -69,4 +71,20 @@ function loadImages() {
   if (bigSrc) {
     img.src = bigSrc;
   }
+}
+
+function loadEvents() {
+  document
+    .querySelectorAll(".splash__footer__social__item__link")
+    .forEach(link => {
+      link.addEventListener("click", e => {
+        ga("send", "event", "CTA", "click", link.attributes["title"].value);
+      });
+    });
+
+  document
+    .querySelector(".splash__footer__contact")
+    .addEventListener("click", e => {
+      ga("send", "event", "Footer", "click", "email");
+    });
 }
