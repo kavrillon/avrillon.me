@@ -6,6 +6,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin");
 const HtmlWebpackExcludeAssetsPlugin = require("html-webpack-exclude-assets-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const devMode = process.env.NODE_ENV !== "production";
 
@@ -115,6 +116,16 @@ module.exports = {
       template: "src/index.html"
     }),
     new HtmlWebpackInlineSourcePlugin(),
-    new HtmlWebpackExcludeAssetsPlugin()
+    new HtmlWebpackExcludeAssetsPlugin(),
+    new CopyWebpackPlugin(
+      [
+        {
+          from: "./CNAME",
+          to: "CNAME",
+          toType: "file"
+        }
+      ],
+      {}
+    )
   ]
 };
