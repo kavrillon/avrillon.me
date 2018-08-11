@@ -5,7 +5,7 @@ branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 if [ ! -z "$(git status --porcelain)" ]
 then
   echo ""
-  echo "You have still some changes to commit, please commit or stash them before continuing"
+  echo "You still have some changes to commit, please commit or stash them before continuing"
   echo ""
   exit 0
 fi
@@ -17,7 +17,7 @@ then
     echo "usage: release.sh <version>"
     echo ""
     echo "Version can be:"
-    echo "    major   use this for breaking changes        (1.0.0 => 2.0.0)"
+    echo "    major   Use this for breaking changes        (1.0.0 => 2.0.0)"
     echo "    minor   Use this for functionality upgrades  (1.0.0 => 1.1.0)"
     echo "    patch   Use this for minor fixes             (1.0.0 => 1.0.1)"
     echo ""
@@ -39,18 +39,18 @@ echo "##-- Get last remote sources from master --##"
 
 git checkout master
 git fetch
-git rebase master
-
-yarn build:prod
+git rebase origin/master
 
 echo ""
 echo "##-- Building last sources from master --##"
+
+yarn build:prod
 
 # Deploying as git tag on Github
 
 echo ""
 echo "##-- Upgrading Project version --##"
-tag=`npm --no-git-tag-version version $1`
+tag=`yarn --no-git-tag-version version $1`
 
 git add package.json
 git commit -m "chore(): release new version ${tag}"
@@ -60,7 +60,7 @@ echo ""
 echo "##-- Deploying on Github tag --##"
 git add -f dist
 
-git commit -m "release(app): generate files for version ${tag}"
+git commit -m "chore(): generate files for version ${tag}"
 git tag ${tag}
 
 git push origin ${tag}
