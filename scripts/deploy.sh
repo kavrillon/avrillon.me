@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 
+# Files status checking
 if [ ! -z "$(git status --porcelain)" ]
 then
   echo ""
@@ -9,6 +10,7 @@ then
   exit 0
 fi
 
+# Argument checking
 if [ $# -eq 0 ]
 then
     echo ""
@@ -17,8 +19,10 @@ then
     exit 0
 fi
 
+# Get tag to deploy
 tag=$1
 
+# Start deploying
 echo ""
 echo "##-- Get last remote sources from $tag --##"
 
@@ -39,4 +43,6 @@ git checkout --orphan gh-pages
 git add -f dist
 git commit -m "GitHub Pages Deployment: $tag"
 git filter-branch -f --prune-empty --subdirectory-filter dist && git push -f origin gh-pages && git checkout -
+
+# Go back to previous branch
 git checkout $branch
