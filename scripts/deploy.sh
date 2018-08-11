@@ -5,7 +5,7 @@ branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 if [ ! -z "$(git status --porcelain)" ]
 then
   echo ""
-  echo "You have still some changes to commit, please commit or stash them before continuing"
+  echo "You still have some changes to commit, please commit or stash them before continuing"
   echo ""
   exit 0
 fi
@@ -28,7 +28,7 @@ echo "##-- Get last remote sources from $tag --##"
 
 git checkout $tag
 git fetch
-git rebase $tag
+git rebase origin/$tag
 
 echo ""
 echo "##-- Building last sources from $tag --##"
