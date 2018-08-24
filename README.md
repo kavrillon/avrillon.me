@@ -16,12 +16,11 @@
 - `yarn deploy <tag>`: deploy built project with the given tag to Github Pages.
 - `yarn release [major|minor|patch]` create a release tag and deploy it.
 
-TODO:
+# TODO
 
 - dom checker ? A11y, etc.
 - Google Analytics
 - select font
-- select favicon
 - create contact@avrillon.me
 - check SEO
 - check A11Y
