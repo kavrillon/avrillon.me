@@ -1,18 +1,9 @@
-// GTag
-window.dataLayer = window.dataLayer || [];
-function gtag() {
-  dataLayer.push(arguments);
-}
-gtag("js", new Date());
-gtag("config", "UA-123741397-1");
-
 // Load
 window.onload = function init() {
   loadImages();
 
   loadEvents();
 };
-
 // Methods
 
 function loadImages() {
@@ -74,13 +65,21 @@ function loadImages() {
 }
 
 function loadEvents() {
-  document
-    .querySelectorAll(".splash__footer__social__item__link")
-    .forEach(link => {
-      link.addEventListener("click", e => {
-        ga("send", "event", "CTA", "click", link.attributes["title"].value);
+  document.querySelectorAll("[data-cta]").forEach(cta => {
+    cta.addEventListener("click", e => {
+      const url = cta.getAttribute("href");
+      const title = cta.getAttribute("title");
+
+      ga("send", "event", "CTA", "click", title, {
+        transport: "beacon",
+        hitCallback: function() {
+          document.location = url;
+        }
       });
+
+      e.preventDefault();
     });
+  });
 
   document
     .querySelector(".splash__footer__contact")

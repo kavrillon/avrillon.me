@@ -35,6 +35,7 @@
       <div class="splash__footer__social">
         <div class="splash__footer__social__item">
           <a class="splash__footer__social__item__link"
+             data-cta
              title="My LinkedIn profile"
              href="https://www.linkedin.com/in/kevinavrillon/">
             <svg viewBox="0 0 1000 1000"
@@ -49,6 +50,7 @@
         </div>
         <div class="splash__footer__social__item">
           <a class="splash__footer__social__item__link"
+             data-cta
              title="Contact me by mail"
              href="mailto:contact@avrillon.me">
             <svg viewBox="0 0 1000 1000"
@@ -62,6 +64,7 @@
         </div>
         <div class="splash__footer__social__item">
           <a class="splash__footer__social__item__link"
+             data-cta
              title="My Github profile"
              href="http://github.com/kavrillon/">
             <svg viewBox="0 0 1024 1024"
@@ -80,8 +83,17 @@
     </div>
   </div>
 
+  <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async
           src="https://www.googletagmanager.com/gtag/js?id=UA-123741397-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-123741397-1');
+  </script>
+
 
 </body>
 
