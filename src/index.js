@@ -76,8 +76,6 @@ function loadEvents() {
           document.location = url;
         }
       });
-
-      e.preventDefault();
     });
   });
 
