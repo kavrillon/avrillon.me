@@ -21,7 +21,6 @@
 - dom checker ? A11y, etc.
 - Google Analytics
 - select font
-- create contact@avrillon.me
 - check SEO
 - check A11Y
 - check W3C

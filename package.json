@@ -1,10 +1,10 @@
 {
-  "name": "kavrillon.github.io",
+  "name": "avrillon.me",
   "version": "0.2.0",
   "main": "index.js",
   "private": true,
-  "repository": "git@github.com:kavrillon/kavrillon.github.io.git",
-  "author": "Kevin Avrillon <kevin.avrillon@gmail.com>",
+  "repository": "git@github.com:kavrillon/avrillon.me.git",
+  "author": "Kevin Avrillon <kevin@avrillon.me>",
   "license": "MIT",
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.19",
