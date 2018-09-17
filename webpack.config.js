@@ -12,8 +12,10 @@ const devMode = process.env.NODE_ENV !== "production";
 
 module.exports = {
   devServer: {
+    allowedHosts: [".local"],
     compress: !devMode,
     contentBase: "./dist",
+    host: "0.0.0.0",
     port: 9000
   },
   devtool: devMode ? "source-map" : false,

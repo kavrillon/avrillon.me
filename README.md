@@ -18,6 +18,7 @@
 
 # TODO
 
+- copy to clipboard email
 - dom checker ? A11y, etc.
 - Google Analytics
 - select font
