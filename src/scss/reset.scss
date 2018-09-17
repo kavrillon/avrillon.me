@@ -2,6 +2,8 @@
 @import "scss/animations";
 
 html {
+  height: 100%;
+  overflow: hidden;
   font-family: $font-family-default;
   font-size: $font-size-default-min;
 
@@ -13,6 +15,8 @@ html {
 body {
   margin: 0;
   background: $white;
+  height: 100%;
+  overflow: hidden;
 }
 
 a {

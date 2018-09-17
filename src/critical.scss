@@ -10,7 +10,7 @@
   margin: 0;
   background: $color-brand-4;
   padding: 0;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   text-align: center;
   color: $white;
@@ -58,7 +58,9 @@
     align-items: center;
     justify-content: flex-end;
     z-index: 3;
+    margin: 0 auto;
     padding: 0 $padding-default;
+    max-width: 650px;
     height: $splash-top-height-min;
 
     &__title {
@@ -77,27 +79,27 @@
 
     &__contact {
       position: relative;
-      margin: $padding-min 0
+      margin: 20px 0
         (($splash-footer-icon-height-min / 2) + $splash-footer-icon-padding) +
         $padding-default;
-      padding-top: $padding-min;
+      padding-top: 20px;
 
       &:before {
         position: absolute;
         top: 0;
         left: 50%;
         z-index: 3;
-        margin-left: -5vh;
+        margin-left: -5%;
         background: $white;
-        width: 10vh;
+        width: 10%;
         height: 1px;
         content: " ";
       }
 
       @media (min-width: $xs) {
-        margin: $padding-default * 2 0
+        margin: $padding-min * 2 0
           (($splash-footer-icon-height / 2) + $splash-footer-icon-padding) +
-          $padding-default * 2;
+          $padding-min * 2;
         padding: $padding-default;
       }
     }
@@ -115,7 +117,7 @@
     z-index: 4;
     background: $white;
     padding: 0 $padding-default;
-    height: 100vh - $splash-top-height-min;
+    height: 100% - $splash-top-height-min;
     color: $color-brand-5;
 
     &__social {
@@ -165,15 +167,11 @@
       @include fadein;
       @include title;
 
-      margin-top: 15px;
-
-      @media (min-width: $xs) {
-        margin-top: 30px;
-      }
+      margin-top: $padding-default;
     }
 
     @media (min-width: $xs) {
-      height: 100vh - $splash-top-height;
+      height: 100% - $splash-top-height;
     }
   }
 }
