@@ -63,18 +63,24 @@
 
     &__title {
       @include title;
+
+      margin: $padding-min 0;
     }
 
     &__baseline {
-      padding: $padding-default 0 0;
+      padding: $padding-min 0 0;
+
+      @media (min-width: $xs) {
+        padding: $padding-default 0 0;
+      }
     }
 
     &__contact {
       position: relative;
-      margin: $padding-default 0
+      margin: $padding-min 0
         (($splash-footer-icon-height-min / 2) + $splash-footer-icon-padding) +
         $padding-default;
-      padding-top: $padding-default;
+      padding-top: $padding-min;
 
       &:before {
         position: absolute;
@@ -92,6 +98,7 @@
         margin: $padding-default * 2 0
           (($splash-footer-icon-height / 2) + $splash-footer-icon-padding) +
           $padding-default * 2;
+        padding: $padding-default;
       }
     }
 
