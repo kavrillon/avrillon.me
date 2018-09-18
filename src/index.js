@@ -1,3 +1,7 @@
+import { copyTextToClipboard } from "./js/navigator";
+
+let ALERT_TIMER;
+
 // Load
 window.onload = function init() {
   loadImages();
@@ -65,23 +69,32 @@ function loadImages() {
 }
 
 function loadEvents() {
-  document.querySelectorAll("[data-cta]").forEach(cta => {
-    cta.addEventListener("click", e => {
-      const url = cta.getAttribute("href");
-      const title = cta.getAttribute("title");
+  const ctaContact = document.getElementById("CTA_Contact");
 
-      ga("send", "event", "CTA", "click", title, {
-        transport: "beacon",
-        hitCallback: function() {
-          document.location = url;
-        }
-      });
-    });
+  ctaContact.addEventListener("click", e => {
+    if (ALERT_TIMER) {
+      return;
+    }
+
+    const previousText = ctaContact.innerHTML;
+    copyTextToClipboard(ctaContact.innerText.trim()).then(
+      () => {
+        alertText(ctaContact, previousText, "Copied!", 5000);
+      },
+      () => {
+        // do nothing
+      }
+    );
   });
+}
 
-  document
-    .querySelector(".splash__footer__contact")
-    .addEventListener("click", e => {
-      ga("send", "event", "Footer", "click", "email");
-    });
+function alertText(element, previousText, alertText, timer) {
+  element.classList.add("active");
+  element.innerHTML = alertText;
+
+  ALERT_TIMER = setTimeout(() => {
+    element.classList.remove("active");
+    element.innerHTML = previousText;
+    ALERT_TIMER = null;
+  }, timer);
 }

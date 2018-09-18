@@ -114,11 +114,12 @@
     position: relative;
     align-items: center;
     justify-content: center;
+    transition: background 300ms ease-in-out;
     z-index: 4;
-    background: $white;
     padding: 0 $padding-default;
     height: 100% - $splash-top-height-min;
     color: $color-brand-5;
+    will-change: background;
 
     &__social {
       position: absolute;
@@ -164,10 +165,42 @@
     }
 
     &__contact {
-      @include fadein;
-      @include title;
+      background: $white;
 
-      margin-top: $padding-default;
+      &__content {
+        @include title;
+
+        display: flex;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        align-items: center;
+        justify-content: center;
+        transition: background 300ms ease-in-out;
+        z-index: 1;
+        background: $white;
+
+        &__label {
+          @include fadein;
+
+          &__icon {
+            margin-right: 15px;
+            width: 22px;
+            fill: $color-brand-5;
+
+            @media (min-width: $md) {
+              width: 32px;
+            }
+          }
+        }
+
+        &.active {
+          background: $color-brand-1;
+          color: $white;
+        }
+      }
     }
 
     @media (min-width: $xs) {
