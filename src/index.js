@@ -79,7 +79,7 @@ function loadEvents() {
     const previousText = ctaContact.innerHTML;
     copyTextToClipboard(ctaContact.innerText.trim()).then(
       () => {
-        alertText(ctaContact, previousText, "Copied!", 5000);
+        alertText(ctaContact, previousText, "Copied!", 3000);
       },
       () => {
         // do nothing

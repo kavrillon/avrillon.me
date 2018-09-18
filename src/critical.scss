@@ -187,12 +187,12 @@
           @include fadein;
 
           &__icon {
-            margin-right: 15px;
-            width: 22px;
+            margin-left: 10px;
+            width: 16px;
             fill: $color-brand-5;
 
             @media (min-width: $md) {
-              width: 32px;
+              width: 28px;
             }
           }
         }
