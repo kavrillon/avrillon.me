@@ -1,6 +1,6 @@
 {
   "name": "avrillon.me",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "main": "index.js",
   "private": true,
   "repository": "git@github.com:kavrillon/avrillon.me.git",
