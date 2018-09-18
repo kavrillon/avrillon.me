@@ -19,12 +19,11 @@
 # TODO
 
 - upgrade deps
+- release script : add commits in release name
 - dom checker ? A11y, etc.
-- Google Analytics
 - select font
 - check SEO
 - check A11Y
 - check W3C
 - check perf
 - tests size compressed/not compressed
-- overwrite text selection
