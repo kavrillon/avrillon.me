@@ -47,27 +47,29 @@ echo "##-- Building last sources from master --##"
 yarn build:prod
 
 # Deploying as git tag on Github
+oldTag=`yarn version --non-interactive | sed -n -e 's/^info Current version: \(.*\)/\1/p'`
+newTag=`yarn version --new-version $1 --no-git-tag-version | sed -n -e 's/^info New version: \(.*\)/\1/p'`
+commits=`git log --pretty=format:"%s" ${oldTag}..master`
 
 echo ""
-echo "##-- Upgrading Project version --##"
-tag=`yarn version --new-version $1 --no-git-tag-version | sed -n -e 's/^info New version: \(.*\)/\1/p'`
+echo "##-- Upgrading Project version (${oldTag} -> ${newTag}) --##"
 
 git add package.json
-git commit -m "chore(): release new version ${tag}"
+git commit -m "chore(): release new version ${newTag}"
 git push origin master
 
 echo ""
-echo "##-- Deploying on Github tag --##"
+echo "##-- Deploying the Github tag --##"
 git add -f dist
 
-git commit -m "chore(): generate files for version ${tag}"
-git tag ${tag}
+git commit -m "chore(): generate files for version ${newTag}"
+git tag -a ${newTag} -m "${commits}"
 
-git push origin ${tag}
+git push origin ${newTag}
 git reset --hard HEAD~1
 
 # Deploy generated release
-yarn deploy $tag
+yarn deploy $newTag
 
 # Go back to previous branch
 git checkout $branch
