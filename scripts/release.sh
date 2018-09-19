@@ -49,7 +49,6 @@ yarn build:prod
 # Deploying as git tag on Github
 oldTag=`yarn version --non-interactive | sed -n -e 's/^info Current version: \(.*\)/\1/p'`
 newTag=`yarn version --new-version $1 --no-git-tag-version | sed -n -e 's/^info New version: \(.*\)/\1/p'`
-commits=`git log --pretty=format:"%s" ${oldTag}..master`
 
 echo ""
 echo "##-- Upgrading Project version (${oldTag} -> ${newTag}) --##"
@@ -62,8 +61,9 @@ echo ""
 echo "##-- Deploying the Github tag --##"
 git add -f dist
 
+commits=`git log --pretty=format:"%s" ${oldTag}..master`
 git commit -m "chore(): generate files for version ${newTag}"
-git tag -a ${newTag} -m "${commits}"
+git tag ${newTag} -m "${commits}"
 
 git push origin ${newTag}
 git reset --hard HEAD~1
