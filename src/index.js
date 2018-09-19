@@ -1,6 +1,6 @@
 import { copyTextToClipboard } from "./js/navigator";
 
-let ALERT_TIMER;
+var ALERT_TIMER;
 
 // Load
 window.onload = function init() {
@@ -69,19 +69,19 @@ function loadImages() {
 }
 
 function loadEvents() {
-  const ctaContact = document.getElementById("CTA_Contact");
+  var ctaContact = document.getElementById("CTA_Contact");
 
-  ctaContact.addEventListener("click", e => {
+  ctaContact.addEventListener("click", function(e) {
     if (ALERT_TIMER) {
       return;
     }
 
-    const previousText = ctaContact.innerHTML;
+    var previousText = ctaContact.innerHTML;
     copyTextToClipboard(ctaContact.innerText.trim()).then(
-      () => {
+      function() {
         alertText(ctaContact, previousText, "Copied!", 3000);
       },
-      () => {
+      function() {
         // do nothing
       }
     );
@@ -92,7 +92,7 @@ function alertText(element, previousText, alertText, timer) {
   element.classList.add("active");
   element.innerHTML = alertText;
 
-  ALERT_TIMER = setTimeout(() => {
+  ALERT_TIMER = setTimeout(function() {
     element.classList.remove("active");
     element.innerHTML = previousText;
     ALERT_TIMER = null;

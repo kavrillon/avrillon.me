@@ -18,7 +18,7 @@
 
 # TODO
 
-- upgrade deps
+- move to typescript
 - release script : add commits in release name
 - dom checker ? A11y, etc.
 - select font
