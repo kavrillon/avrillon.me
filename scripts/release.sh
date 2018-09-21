@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+oldTag=`yarn version --non-interactive | sed -n -e 's/^info Current version: \(.*\)/\1/p'`
 
 # Files status checking
 if [ ! -z "$(git status --porcelain)" ]
@@ -11,20 +12,31 @@ then
 fi
 
 # Argument checking
+if [ $# -eq 1 ]
+then
+    version=$1
+fi
+
 if [ $# -eq 0 ]
 then
+    toRelease=`git log --pretty=format:"%s" ${oldTag}..master | sed 's/^\(.*\)/    \1/'`
+
     echo ""
-    echo "usage: release.sh <version>"
+    echo "# Commits to release:"
+    echo "${toRelease}"
     echo ""
-    echo "Version can be:"
+
+    echo "# Version can be:"
     echo "    major   Use this for breaking changes        (1.0.0 => 2.0.0)"
     echo "    minor   Use this for functionality upgrades  (1.0.0 => 1.1.0)"
     echo "    patch   Use this for minor fixes             (1.0.0 => 1.0.1)"
     echo ""
-    exit 0
+
+    echo "Your choice? "
+    read version
 fi
 
-if [ $1 != "major" ] && [ $1 != "minor" ] && [ $1 != "patch" ]
+if [ ${version} != "major" ] && [ ${version} != "minor" ] && [ ${version} != "patch" ]
 then
     echo ""
     echo "Version should be one of: major, minor or patch"
@@ -47,25 +59,27 @@ echo "##-- Building last sources from master --##"
 yarn build:prod
 
 # Deploying as git tag on Github
-oldTag=`yarn version --non-interactive | sed -n -e 's/^info Current version: \(.*\)/\1/p'`
-newTag=`yarn version --new-version $1 --no-git-tag-version | sed -n -e 's/^info New version: \(.*\)/\1/p'`
+newTag=`yarn version --new-version ${version} --no-git-tag-version | sed -n -e 's/^info New version: \(.*\)/\1/p'`
 
 echo ""
 echo "##-- Upgrading Project version (${oldTag} -> ${newTag}) --##"
 
+# Create a commit for release
 git add package.json
 git commit -m "chore(): release new version ${newTag}"
 git push origin master
 
 echo ""
 echo "##-- Deploying the Github tag --##"
-git add -f dist
+commits=`git log --pretty=format:"%s" ${oldTag}..master` # Get all commits to release (with the last one)
 
-commits=`git log --pretty=format:"%s" ${oldTag}..master`
+ # Add dist folder in tag
+git add -f dist
 git commit -m "chore(): generate files for version ${newTag}"
 git tag ${newTag} -m "${commits}"
-
 git push origin ${newTag}
+
+ # Removing commit for dist files
 git reset --hard HEAD~1
 
 # Deploy generated release
