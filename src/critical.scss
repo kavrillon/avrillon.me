@@ -181,6 +181,7 @@
         transition: background 300ms ease-in-out;
         z-index: 1;
         background: $white;
+        cursor: pointer;
         padding-top: $padding-min;
 
         &__label {
@@ -199,6 +200,7 @@
 
         &.active {
           background: $color-brand-1;
+          cursor: default;
           color: $white;
         }
 
