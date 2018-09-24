@@ -22,7 +22,7 @@ module.exports = {
   entry: {
     app: "./src/index.js",
     critical: "./src/critical.scss",
-    styles: "./src/index.scss"
+    // styles: "./src/index.scss" // No need for now
   },
   mode: devMode ? "development" : "production",
   module: {
