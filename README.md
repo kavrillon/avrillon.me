@@ -25,4 +25,5 @@
 - check A11Y
 - check W3C
 - check perf
+- potential new bg color ? // #002d52
 - tests size compressed/not compressed

@@ -1,12 +1,21 @@
 #!/usr/bin/env bash
-branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
-oldTag=`yarn version --non-interactive | sed -n -e 's/^info Current version: \(.*\)/\1/p'`
+BRANCH=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+OLD_TAG=`yarn version --non-interactive | sed -n -e 's/^info Current version: \(.*\)/\1/p'`
+
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+PURPLE='\033[1;35m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
 
 # Files status checking
 if [ ! -z "$(git status --porcelain)" ]
 then
   echo ""
-  echo "You still have some changes to commit, please commit or stash them before continuing"
+  echo -e "${RED}You still have some changes to commit, please commit or stash them before continuing${NC}"
   echo ""
   exit 0
 fi
@@ -14,32 +23,39 @@ fi
 # Argument checking
 if [ $# -eq 1 ]
 then
-    version=$1
+    VERSION=$1
 fi
 
 if [ $# -eq 0 ]
 then
-    toRelease=`git log --pretty=format:"%s" ${oldTag}..master | sed 's/^\(.*\)/    \1/'`
+    TO_RELEASE=`git log --pretty=format:"%s" ${OLD_TAG}..master | sed 's/^\(.*\)/    \1/'`
 
     echo ""
     echo "# Commits to release:"
-    echo "${toRelease}"
+    echo -e "${YELLOW}${TO_RELEASE}${NC}"
     echo ""
 
     echo "# Version can be:"
     echo "    major   Use this for breaking changes        (1.0.0 => 2.0.0)"
     echo "    minor   Use this for functionality upgrades  (1.0.0 => 1.1.0)"
     echo "    patch   Use this for minor fixes             (1.0.0 => 1.0.1)"
+    echo "    exit    Exit the release process"
     echo ""
 
     echo "Your choice? "
-    read version
+    read VERSION
 fi
 
-if [ ${version} != "major" ] && [ ${version} != "minor" ] && [ ${version} != "patch" ]
+if [ ${VERSION} == "exit" ]
+then
+    echo "Mokayyy !"
+    exit 0
+fi
+
+if [ ${VERSION} != "major" ] && [ ${VERSION} != "minor" ] && [ ${VERSION} != "patch" ]
 then
     echo ""
-    echo "Version should be one of: major, minor or patch"
+    echo -e "${RED}Version should be one of: major, minor or patch${NC}"
     echo ""
     exit 0
 fi
@@ -59,31 +75,31 @@ echo "##-- Building last sources from master --##"
 yarn build:prod
 
 # Deploying as git tag on Github
-newTag=`yarn version --new-version ${version} --no-git-tag-version | sed -n -e 's/^info New version: \(.*\)/\1/p'`
+NEW_TAG=`yarn version --new-version ${VERSION} --no-git-tag-version | sed -n -e 's/^info New version: \(.*\)/\1/p'`
 
 echo ""
-echo "##-- Upgrading Project version (${oldTag} -> ${newTag}) --##"
+echo "##-- Upgrading Project version (${OLD_TAG} -> ${NEW_TAG}) --##"
 
 # Create a commit for release
 git add package.json
-git commit -m "chore(): release new version ${newTag}"
+git commit -m "chore(): release new version ${NEW_TAG}"
 git push origin master
 
 echo ""
 echo "##-- Deploying the Github tag --##"
-commits=`git log --pretty=format:"%s" ${oldTag}..master` # Get all commits to release (with the last one)
+COMMITS=`git log --pretty=format:"%s" ${OLD_TAG}..master` # Get all commits to release (with the last one)
 
  # Add dist folder in tag
 git add -f dist
-git commit -m "chore(): generate files for version ${newTag}"
-git tag ${newTag} -m "${commits}"
-git push origin ${newTag}
+git commit -m "chore(): generate files for version ${NEW_TAG}"
+git tag ${NEW_TAG} -m "${COMMITS}"
+git push origin ${NEW_TAG}
 
  # Removing commit for dist files
 git reset --hard HEAD~1
 
 # Deploy generated release
-yarn deploy $newTag
+yarn deploy $NEW_TAG
 
 # Go back to previous branch
-git checkout $branch
+git checkout $BRANCH
