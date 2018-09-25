@@ -10,6 +10,8 @@ BLUE='\033[0;34m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
+BOLD='\033[0;1m'
+
 # Files status checking
 if [ ! -z "$(git status --porcelain)" ]
 then
@@ -33,19 +35,22 @@ TAG=$1
 
 # Start deploying
 echo ""
-echo "##-- Get last remote sources from $TAG --##"
+echo -e "${BOLD}##-- Get last remote sources from $TAG --##${NC}"
+echo ""
 
 git checkout $TAG
 git fetch
 git rebase origin/$TAG
 
 echo ""
-echo "##-- Building last sources from $TAG --##"
+echo -e "${BOLD}##-- Building last sources from $TAG --##${NC}"
+echo ""
 
 yarn build:prod
 
 echo ""
-echo "##-- Deploying on Github Pages --##"
+echo -e "${BOLD}##-- Deploying on Github Pages --##${NC}"
+echo ""
 
 git branch --delete --force gh-pages
 git checkout --orphan gh-pages

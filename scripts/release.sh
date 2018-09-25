@@ -9,7 +9,9 @@ YELLOW='\033[0;33m'
 PURPLE='\033[1;35m'
 BLUE='\033[0;34m'
 CYAN='\033[0;36m'
-NC='\033[0m' # No Color
+NC='\033[0;m' # No Color
+
+BOLD='\033[0;1m'
 
 # Files status checking
 if [ ! -z "$(git status --porcelain)" ]
@@ -63,14 +65,16 @@ fi
 # Start release
 
 echo ""
-echo "##-- Get last remote sources from master --##"
+echo -e "${BOLD}##-- Get last remote sources from master --##${NC}"
+echo ""
 
 git checkout master
 git fetch
 git rebase origin/master
 
 echo ""
-echo "##-- Building last sources from master --##"
+echo -e "${BOLD}##-- Building last sources from master --##${NC}"
+echo ""
 
 yarn build:prod
 
@@ -78,7 +82,7 @@ yarn build:prod
 NEW_TAG=`yarn version --new-version ${VERSION} --no-git-tag-version | sed -n -e 's/^info New version: \(.*\)/\1/p'`
 
 echo ""
-echo "##-- Upgrading Project version (${OLD_TAG} -> ${NEW_TAG}) --##"
+echo -e "${BOLD}##-- Upgrading Project version (${OLD_TAG} -> ${NEW_TAG}) --##${NC}"
 
 # Create a commit for release
 git add package.json
@@ -86,7 +90,8 @@ git commit -m "chore(): release new version ${NEW_TAG}"
 git push origin master
 
 echo ""
-echo "##-- Deploying the Github tag --##"
+echo -e "${BOLD}##-- Deploying the Github tag --##${NC}"
+echo ""
 COMMITS=`git log --pretty=format:"%s" ${OLD_TAG}..master` # Get all commits to release (with the last one)
 
  # Add dist folder in tag
