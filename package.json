@@ -23,15 +23,15 @@
     "postcss-loader": "^3.0.0",
     "prettier": "^1.14.0",
     "sass-loader": "^7.1.0",
-    "stylelint": "^9.5.0",
+    "stylelint": "^9.6.0",
     "stylelint-config-concentric-order": "^3.4.0",
     "stylelint-config-prettier": "^4.0.0",
     "stylelint-config-recommended-scss": "^3.2.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "^3.2.0",
     "uglifyjs-webpack-plugin": "^2.0.1",
-    "webpack": "^4.19.1",
-    "webpack-cli": "^3.1.0",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.8"
   },
   "scripts": {
