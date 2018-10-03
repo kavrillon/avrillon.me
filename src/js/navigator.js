@@ -25,3 +25,16 @@ exports.copyTextToClipboard = function(text) {
 
   return navigator.clipboard.writeText(text);
 };
+
+exports.isClipboardCopyAvailable = function() {
+  if (navigator.clipboard) {
+    return Promise.resolve(true);
+  }
+  return fallbackCopyTextToClipboard("test")
+    .then(function() {
+      return Promise.resolve(true);
+    })
+    .catch(function() {
+      return Promise.resolve(false);
+    });
+};

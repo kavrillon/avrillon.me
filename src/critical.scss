@@ -181,19 +181,38 @@
         transition: background 300ms ease-in-out;
         z-index: 1;
         background: $white;
-        cursor: pointer;
         padding-top: $padding-min;
 
         &__label {
           @include fadein;
 
+          position: relative;
+
           &__icon {
+            position: absolute;
+            top: 10px;
+            right: -25px;
+            transition: opacity 300ms ease-in-out;
+            opacity: 0;
             margin-left: 10px;
             width: 16px;
+            will-change: opacity;
             fill: $color-brand-5;
 
             @media (min-width: $md) {
+              top: 20px;
+              right: -40px;
               width: 28px;
+            }
+          }
+        }
+
+        &.copyable {
+          cursor: pointer;
+
+          &:hover {
+            .splash__footer__contact__content__label__icon {
+              opacity: 1;
             }
           }
         }
