@@ -192,16 +192,17 @@
             position: absolute;
             top: 10px;
             right: -25px;
-            transition: opacity 300ms ease-in-out;
+            transform: translateX(-5px);
+            transition: opacity, transform 300ms ease-in-out;
             opacity: 0;
             margin-left: 10px;
             width: 16px;
-            will-change: opacity;
+            will-change: opacity, transform;
             fill: $color-brand-5;
 
             @media (min-width: $md) {
               top: 20px;
-              right: -40px;
+              right: -50px;
               width: 28px;
             }
           }
@@ -212,6 +213,7 @@
 
           &:hover {
             .splash__footer__contact__content__label__icon {
+              transform: translateX(0);
               opacity: 1;
             }
           }
