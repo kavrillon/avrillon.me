@@ -200,7 +200,13 @@
             will-change: opacity, transform;
             fill: $color-brand-5;
 
-            @media (min-width: $md) {
+            @media (min-width: $xs) {
+              top: 12px;
+              right: -35px;
+              width: 20px;
+            }
+
+            @media (min-width: $sm) {
               top: 20px;
               right: -50px;
               width: 28px;
