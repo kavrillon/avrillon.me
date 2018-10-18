@@ -15,3 +15,5 @@
 
 - `yarn deploy <tag>`: deploy built project with the given tag to Github Pages.
 - `yarn release [major|minor|patch]` create a release tag and deploy it.
+
+https://meowni.ca/posts/2017-puppeteer-tests/
