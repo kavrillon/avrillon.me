@@ -15,15 +15,3 @@
 
 - `yarn deploy <tag>`: deploy built project with the given tag to Github Pages.
 - `yarn release [major|minor|patch]` create a release tag and deploy it.
-
-# TODO
-
-- move to typescript
-- dom checker ? A11y, etc.
-- select font
-- check SEO
-- check A11Y
-- check W3C
-- check perf
-- potential new bg color ? // #002d52
-- tests size compressed/not compressed
