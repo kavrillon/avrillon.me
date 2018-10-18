@@ -15,8 +15,3 @@
 
 - `yarn deploy <tag>`: deploy built project with the given tag to Github Pages.
 - `yarn release [major|minor|patch]` create a release tag and deploy it.
-
-# TODO
-
--
-- tests size compressed/not compressed
