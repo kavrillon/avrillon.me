@@ -2,7 +2,7 @@
 
 ## Installation
 
-`yarn install`
+`yarn install`: install all dependencies
 
 ## Use
 
