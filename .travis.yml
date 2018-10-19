@@ -6,9 +6,12 @@ sudo: false
 # -----------------------------------------------------------------------------
 
 # Node.js version and necessary services
-node_js: 
+node_js:
   - 10
   - node # check for latest release
+
+os:
+  - osx
 
 services:
   - docker
@@ -33,4 +36,4 @@ install:
 
 # Perform tests
 script:
-  - yarn lint
+  - yarn lint && yarn test
