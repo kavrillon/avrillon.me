@@ -4,8 +4,11 @@
 html {
   height: 100%;
   overflow: hidden;
+  text-rendering: optimizeLegibility;
   font-family: $font-family-default;
   font-size: $font-size-default-min;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   @media (min-width: $sm) {
     font-size: $font-size-default;
