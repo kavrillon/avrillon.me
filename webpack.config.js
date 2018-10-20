@@ -21,7 +21,7 @@ module.exports = {
   devtool: devMode ? "source-map" : false,
   entry: {
     app: "./src/index.js",
-    critical: "./src/critical.scss",
+    critical: "./src/critical.scss"
     // styles: "./src/index.scss" // No need for now
   },
   mode: devMode ? "development" : "production",
@@ -79,6 +79,15 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.(ttf|eot|woff|woff2)$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "fonts/[name].[ext]"
+          }
+        }
       }
     ]
   },
