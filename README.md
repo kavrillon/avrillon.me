@@ -1,5 +1,7 @@
 # avrillon.me
 
+[![Build Status](https://travis-ci.com/kavrillon/avrillon.me.svg?branch=master)](https://travis-ci.com/kavrillon/avrillon.me)
+
 ## Installation
 
 `yarn install`: install all dependencies
@@ -15,3 +17,7 @@
 
 - `yarn deploy <tag>`: deploy built project with the given tag to Github Pages.
 - `yarn release [major|minor|patch]` create a release tag and deploy it.
+
+## Links
+
+- https://meowni.ca/posts/2017-puppeteer-tests/
