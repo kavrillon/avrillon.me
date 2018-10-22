@@ -230,6 +230,11 @@
           background: $color-brand-1;
           cursor: default;
           color: $white;
+          font-size: $font-size-default-min;
+
+          @media (min-width: $sm) {
+            font-size: $font-size-default;
+          }
         }
 
         @media (min-width: $sm) {

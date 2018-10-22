@@ -83,7 +83,12 @@ function loadEvents() {
         var previousText = ctaContact.innerHTML;
         copyTextToClipboard(ctaContact.innerText.trim()).then(
           function() {
-            alertText(ctaContact, previousText, "Copied!", 3000);
+            alertText(
+              ctaContact,
+              previousText,
+              "Email copied.<br />Drop me a word!",
+              3000
+            );
           },
           function() {
             // do nothing
