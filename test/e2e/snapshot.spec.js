@@ -10,7 +10,7 @@ const screenshotConfig = {
   fullPage: true
 };
 
-describe("Screenshot", () => {
+describe("Snapshot", () => {
   beforeAll(async () => {
     jest.setTimeout(30000);
     await page.goto(url);
@@ -22,7 +22,7 @@ describe("Screenshot", () => {
       await page.waitFor(3000);
     });
 
-    it("should match previous screenshot", async () => {
+    it("should match previous one", async () => {
       const image = await page.screenshot();
       expect(image).toMatchImageSnapshot(screenshotConfig);
     });
@@ -34,7 +34,14 @@ describe("Screenshot", () => {
       await page.waitFor(3000);
     });
 
-    it("should match previous screenshot", async () => {
+    it("should match previous one", async () => {
+      const image = await page.screenshot();
+      expect(image).toMatchImageSnapshot(screenshotConfig);
+    });
+
+    it("when should match previous one when focusing action", async () => {
+      await page.focus("[data-cta]");
+      await page.waitFor(100);
       const image = await page.screenshot();
       expect(image).toMatchImageSnapshot(screenshotConfig);
     });
