@@ -1,6 +1,6 @@
 module.exports = {
   launch: {
-    dumpio: true,
+    dumpio: false, // Hide default browser process stdout
     headless: true
   },
   server: {
