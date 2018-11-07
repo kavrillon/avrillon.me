@@ -21,4 +21,5 @@
 ## Links
 
 - https://meowni.ca/posts/2017-puppeteer-tests/
-  https://github.com/redbadger/Puppeteer-lighthouse-jest/blob/master/tests/lighthouse.test.js
+- https://github.com/redbadger/Puppeteer-lighthouse-jest/blob/master/tests/lighthouse.test.js
+- Some Puppeteer samples: https://github.com/checkly/puppeteer-examples
