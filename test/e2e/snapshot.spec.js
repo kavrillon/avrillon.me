@@ -47,5 +47,12 @@ describe("Snapshot", () => {
       const image = await page.screenshot();
       expect(image).toMatchImageSnapshot(screenshotConfig);
     });
+
+    it("should match previous one when focusing email", async () => {
+      await page.focus("#CTA_Contact");
+      await page.waitFor(100);
+      const image = await page.screenshot();
+      expect(image).toMatchImageSnapshot(screenshotConfig);
+    });
   });
 });
