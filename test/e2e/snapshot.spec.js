@@ -1,4 +1,6 @@
 const { toMatchImageSnapshot } = require("jest-image-snapshot");
+const devices = require("puppeteer/DeviceDescriptors");
+
 expect.extend({ toMatchImageSnapshot });
 
 const url = "http://localhost:9000";
@@ -18,7 +20,7 @@ describe("Snapshot", () => {
 
   describe("Mobile", () => {
     beforeAll(async () => {
-      await page.setViewport({ width: 320, height: 480, hasTouch: true });
+      page.emulate(devices["iPhone 4"]);
       await page.waitFor(3000);
     });
 
