@@ -22,6 +22,15 @@ then
   exit 0
 fi
 
+# Get last sources
+echo ""
+echo -e "${BOLD}##-- Get last remote sources from master --##${NC}"
+echo ""
+
+git checkout master
+git fetch
+git rebase origin/master
+
 # Argument checking
 if [ $# -eq 1 ]
 then
@@ -63,15 +72,6 @@ then
 fi
 
 # Start release
-
-echo ""
-echo -e "${BOLD}##-- Get last remote sources from master --##${NC}"
-echo ""
-
-git checkout master
-git fetch
-git rebase origin/master
-
 echo ""
 echo -e "${BOLD}##-- Building last sources from master --##${NC}"
 echo ""
