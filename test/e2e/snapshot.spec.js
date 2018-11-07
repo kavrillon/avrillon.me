@@ -24,7 +24,7 @@ describe("Snapshot", () => {
       await page.waitFor(3000);
     });
 
-    it("should match previous one", async () => {
+    it("should match on init", async () => {
       const image = await page.screenshot();
       expect(image).toMatchImageSnapshot(screenshotConfig);
     });
@@ -36,19 +36,19 @@ describe("Snapshot", () => {
       await page.waitFor(3000);
     });
 
-    it("should match previous one", async () => {
+    it("should match on init", async () => {
       const image = await page.screenshot();
       expect(image).toMatchImageSnapshot(screenshotConfig);
     });
 
-    it("when should match previous one when focusing action", async () => {
+    it("should match when focusing action", async () => {
       await page.focus("[data-cta]");
       await page.waitFor(100);
       const image = await page.screenshot();
       expect(image).toMatchImageSnapshot(screenshotConfig);
     });
 
-    it("should match previous one when focusing email", async () => {
+    it("should match when focusing email", async () => {
       await page.focus("#CTA_Contact");
       await page.waitFor(100);
       const image = await page.screenshot();
