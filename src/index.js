@@ -74,29 +74,40 @@ function loadEvents() {
   isClipboardCopyAvailable().then(function(result) {
     if (true === result) {
       ctaContact.classList.add("copyable");
-
-      ctaContact.addEventListener("click", function(e) {
-        if (ALERT_TIMER) {
-          return;
+      ctaContact.setAttribute("tabindex", "0");
+      ctaContact.addEventListener("keypress", function(e) {
+        var key = e.which || e.keyCode;
+        if (key === 13) {
+          launchCopy(ctaContact);
         }
+      });
 
-        var previousText = ctaContact.innerHTML;
-        copyTextToClipboard(ctaContact.innerText.trim()).then(
-          function() {
-            alertText(
-              ctaContact,
-              previousText,
-              "Email copied.<br />Drop me a word!",
-              3000
-            );
-          },
-          function() {
-            // do nothing
-          }
-        );
+      ctaContact.addEventListener("click", function() {
+        launchCopy(ctaContact);
       });
     }
   });
+}
+
+function launchCopy(button) {
+  if (ALERT_TIMER) {
+    return;
+  }
+
+  var previousText = button.innerHTML;
+  copyTextToClipboard(button.innerText.trim()).then(
+    function() {
+      alertText(
+        button,
+        previousText,
+        "Email copied.<br />Drop me a word!",
+        3000
+      );
+    },
+    function() {
+      // do nothing
+    }
+  );
 }
 
 function alertText(element, previousText, alertText, timer) {

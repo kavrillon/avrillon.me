@@ -216,8 +216,10 @@
         }
 
         &.copyable {
+          outline: 0;
           cursor: pointer;
 
+          &:focus,
           &:hover {
             .splash__footer__contact__content__label__icon {
               transform: translateX(0);
