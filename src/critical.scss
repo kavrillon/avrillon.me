@@ -189,6 +189,15 @@
 
           position: relative;
 
+          span {
+            @include transition-delay-async-children(17, 0.04s);
+
+            display: inline-block;
+            position: relative;
+            transform: perspective(1000px) rotate3d(0, 1, 0, 0deg);
+            transition: transform 0.5s, color 0.5s;
+          }
+
           &__icon {
             position: absolute;
             top: 10px;
@@ -199,7 +208,7 @@
             margin-left: 10px;
             width: 16px;
             will-change: opacity, transform;
-            fill: $color-brand-5;
+            fill: $color-brand-2;
 
             @media (min-width: $xs) {
               top: 12px;
@@ -221,9 +230,17 @@
 
           &:focus,
           &:hover {
-            .splash__footer__contact__content__label__icon {
-              transform: translateX(0);
-              opacity: 1;
+            .splash__footer__contact__content__label {
+              span {
+                transform: perspective(1000px) rotate3d(0, 1, 0, 360deg);
+                color: $color-brand-2;
+              }
+
+              &__icon {
+                transform: translateX(0);
+                transition-delay: 1s;
+                opacity: 1;
+              }
             }
           }
         }

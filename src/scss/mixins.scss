@@ -12,3 +12,11 @@
     font-size: $font-size-title;
   }
 }
+
+@mixin transition-delay-async-children($count, $delay) {
+  @for $i from 0 through $count {
+    &:nth-child(#{$i}) {
+      transition-delay: $i * $delay;
+    }
+  }
+}
