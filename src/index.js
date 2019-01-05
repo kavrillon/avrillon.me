@@ -1,4 +1,4 @@
-import { copyTextToClipboard, isClipboardCopyAvailable } from "./js/navigator";
+import clipboardCopy from "clipboard-copy";
 
 var ALERT_TIMER;
 
@@ -71,22 +71,20 @@ function loadImages() {
 function loadEvents() {
   var ctaContact = document.getElementById("CTA_Contact");
 
-  isClipboardCopyAvailable().then(function(result) {
-    if (true === result) {
-      ctaContact.classList.add("copyable");
-      ctaContact.setAttribute("tabindex", "0");
-      ctaContact.addEventListener("keypress", function(e) {
-        var key = e.which || e.keyCode;
-        if (key === 13) {
-          launchCopy(ctaContact);
-        }
-      });
-
-      ctaContact.addEventListener("click", function() {
+  setTimeout(function() {
+    ctaContact.classList.add("copyable");
+    ctaContact.setAttribute("tabindex", "0");
+    ctaContact.addEventListener("keypress", function(e) {
+      var key = e.which || e.keyCode;
+      if (key === 13) {
         launchCopy(ctaContact);
-      });
-    }
-  });
+      }
+    });
+
+    ctaContact.addEventListener("click", function() {
+      launchCopy(ctaContact);
+    });
+  }, 1000);
 }
 
 function launchCopy(button) {
@@ -95,7 +93,7 @@ function launchCopy(button) {
   }
 
   var previousText = button.innerHTML;
-  copyTextToClipboard(button.innerText.trim()).then(
+  clipboardCopy(button.innerText.trim()).then(
     function() {
       alertText(
         button,
