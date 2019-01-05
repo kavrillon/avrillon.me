@@ -57,5 +57,8 @@
     "test:e2e:audit": "jest test/e2e/audit.spec.js",
     "test:e2e:dom": "jest test/e2e/dom.spec.js",
     "test:e2e:snapshot": "jest test/e2e/snapshot.spec.js"
+  },
+  "dependencies": {
+    "clipboard-copy": "^2.0.1"
   }
 }
