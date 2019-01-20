@@ -24,3 +24,4 @@
 - https://github.com/redbadger/Puppeteer-lighthouse-jest/blob/master/tests/lighthouse.test.js
 - Some Puppeteer samples: https://github.com/checkly/puppeteer-examples
 - Debug Travis: https://docs.travis-ci.com/user/running-build-in-debug-mode/
+- Favicon generator: https://realfavicongenerator.net

@@ -139,6 +139,36 @@ module.exports = {
         }
       ],
       {}
+    ),
+    new CopyWebpackPlugin(
+      [
+        {
+          from: "./site.webmanifest",
+          to: "site.webmanifest",
+          toType: "file"
+        }
+      ],
+      {}
+    ),
+    new CopyWebpackPlugin(
+      [
+        {
+          from: "./browserconfig.xml",
+          to: "browserconfig.xml",
+          toType: "file"
+        }
+      ],
+      {}
+    ),
+    new CopyWebpackPlugin(
+      [
+        {
+          from: "./src/img/favicon.ico",
+          to: "favicon.ico",
+          toType: "file"
+        }
+      ],
+      {}
     )
   ]
 };
