@@ -6,7 +6,11 @@ $color-brand-4: #017a8b;
 $color-brand-5: #266074;
 $color-brand-6: #2f4858;
 
-$white: #fafafa;
+$color-brand-start-radial: $color-brand-4;
+$color-brand-end-radial: #013d46;
+
+$black: #000;
+$white: #fff;
 
 // Global paddings
 $padding-default: 30px;
@@ -20,10 +24,13 @@ $font-size-default-min: 18px;
 $font-family-default: Lato, Arial;
 
 // Global Borders
-$radius-default: 30px;
+$radius-default: 0;
 
 // Global Animations
 $animation-duration: 1s;
+$transition-duration: 120ms;
+$transition-load: all 1000ms ease-in-out;
+$transition-load-open-delay: 500ms;
 
 // Global Breakpoints
 $xs: 576px;
@@ -33,8 +40,3 @@ $lg: 1200px;
 $xlg: 1900px;
 
 // Component specific
-$splash-top-height: 66%;
-$splash-top-height-min: 75%;
-$splash-footer-icon-height: 100px;
-$splash-footer-icon-height-min: 60px;
-$splash-footer-icon-padding: 10px;
