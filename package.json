@@ -50,7 +50,7 @@
     "lint:scss": "stylelint 'src/**/*.scss'",
     "release": "bash scripts/release.sh",
     "start": "yarn start:dev",
-    "start:dev": "webpack-dev-server",
+    "start:dev": "webpack-dev-server --progress --colors",
     "start:prod": "NODE_ENV=production webpack-dev-server",
     "test": "yarn test:e2e",
     "test:e2e": "jest",
