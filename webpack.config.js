@@ -52,7 +52,9 @@ module.exports = {
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
-          "file-loader",
+          "file-loader?outputPath=img&name=" +
+            (devMode ? "[name]" : "[name].[hash:7]") +
+            ".[ext]",
           {
             loader: "image-webpack-loader",
             options: {
@@ -103,13 +105,13 @@ module.exports = {
     ]
   },
   output: {
-    filename: devMode ? "[name].js" : "[name].[hash].js",
+    filename: devMode ? "js/[name].js" : "js/[name].[hash:7].js",
     path: path.resolve(__dirname, "dist")
   },
   plugins: [
     new CleanWebpackPlugin(["dist"]),
     new ExtractTextPlugin({
-      filename: devMode ? "[name].css" : "[name].[hash].css"
+      filename: devMode ? "css/[name].css" : "css/[name].[hash:7].css"
     }),
     new HtmlWebpackPlugin({
       excludeAssets: [/critical.*.js/, /styles.*.js/],
