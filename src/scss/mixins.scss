@@ -1,14 +1,2 @@
 @import "variables";
 @import "animations";
-
-@mixin fadein {
-  animation: fadein $animation-duration;
-}
-
-@mixin title {
-  font-size: $font-size-title-min;
-
-  @media (min-width: $xs) {
-    font-size: $font-size-title;
-  }
-}

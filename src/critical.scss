@@ -5,16 +5,22 @@
 @import "scss/reset";
 @import "scss/variables";
 
-.splash {
+.home {
+  display: flex;
   position: relative;
-  z-index: 1;
-  margin: 0;
-  background: $color-brand-4;
-  padding: 0;
-  height: 100%;
+  flex: 0 0 100%;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  transition: $transition-load;
+  transition-delay: $transition-load-open-delay;
+  background-image: radial-gradient(
+    farthest-corner at 15% 101%,
+    $color-brand-start-radial,
+    $color-brand-end-radial
+  );
   overflow: hidden;
-  text-align: center;
-  color: $white;
+  will-change: padding-top;
 
   &:before {
     position: absolute;
@@ -22,231 +28,271 @@
     right: 0;
     bottom: 0;
     left: 0;
-    opacity: 0.7;
-    z-index: 2;
-    //background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20width%3D%221500%22%20height%3D%22823%22%20viewBox%3D%220%200%201500%20823%22%3E%0A%20%20%3Cfilter%20id%3D%22blur%22%20color-interpolation-filters%3D%22sRGB%22%3E%0A%20%20%20%20%3CfeGaussianBlur%20stdDeviation%3D%2220%22%20edgeMode%3D%22duplicate%22%20/%3E%0A%20%20%20%20%3CfeComponentTransfer%3E%0A%20%20%20%20%20%20%3CfeFuncA%20type%3D%22discrete%22%20tableValues%3D%221%201%22%20/%3E%0A%20%20%20%20%3C/feComponentTransfer%3E%0A%20%20%3C/filter%3E%0A%20%20%3Cimage%20filter%3D%22url%28%23blur%29%22%20xlink%3Ahref%3D%22data%3Aimage/jpeg%3Bbase64%2C/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAYEBAQEBAYEBAYJBgUGCQoHBgYHCgsJCQoJCQsPCwwMDAwLDwwNDg4ODQwRERMTEREaGRkZGh0dHR0dHR0dHR0BBgcHDAsMFg8PFhkUEBQZHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHf/AABEIABYAKAMBEQACEQEDEQH/xACNAAADAQEAAAAAAAAAAAAAAAAEBQYHAxAAAQQABQMBBQkAAAAAAAAAAQIDBBEABQYSMRMhQRQHCCIzURUWIzJhYnGBoQEAAwEBAQAAAAAAAAAAAAAAAwQFBgIBEQACAAUBAwkHBQAAAAAAAAABAgADBBEhEgUxQQYiI1JxctHS8BUyUWGRoeEzgYKSwf/aAAwDAQACEQMRAD8Al9VzJGn22ZUKK3IjEEPOym0p2rHAOyqH643O1a+rpyDLUaLZO/8A0fmM/SS5U24YnVCyHqhpTBezCKICiPw/TOl1Cz9KH5f5xGl8rpi3WZLDNbFsZ+YPDshp9kg20Nj1uhRL14wkOqciNks18IeQpZTfdXY+f8wEcqK0nAQfxNuzOYL7JlcS0NsmnO6gWlnK4IS4ptTqkSF0dqeSmhZqx4xUp+UFZUvpRJa/vf1b4QpNoZMhbuzRQfdeGiKjrreXKq3V9LY1f7b8DxffGoktNVbOwduJ3fQfAcImM6E3UWEa3L0WmdDeiphp3upIBeBWgFQI3VV2L5GMvOqtaaS0MLK0tfSYlx7u+XORWWBPmMSAVFchlKUAk1WxAPCAODuvziB7Pp7ZNz8zD5rpwN9MQrHsI1VqCM8VGDLahS5cCahqOtp5mXEcKDtCSkLS8nYsKuhu7iu+EZdAt+bMIhx64jBQ+vCAGPY1qbRjrKM6bdYlE9SHPhyloSQT8lQ2ONp2nm+fGO3RVBBXPWDfjEeifryN3VKxp+n4eeZtlraFwJrTaAW35kxbfxrHPTo7nEj67RjSbP2gCgDK2OLEejEWpp2DGxHYAYlWMuyYEXm2dniwhmbQ/vbeIDVe0rfopfvL5o0YkUnGY30PhHWXG0y47DHqtRNSwtfpVNfaCgVbfi7ON18u747YnvN2qGXUiE3x7n3s27thpZdAVazOBbPvfa439kDQ8vAVLEDNM+Nvu+pUhmZYl0krKwhNFVbbvvjqXUbTF+ilnnG+V826BzJNEbdI4xjB8ILh5bmyiQ7m+okJHdCmWcwJK/AKVI7Gr4Vg5rNpWxTy799fNC4p6S+ZrW7p8IZZvk2ZqiZWJuodRIQmEkQDGhrO6PvVRd6IKurvu+rS/rgcurrs2kJvzzhv/tBmkU2Okbd1fxH/2Q%3D%3D%22%20x%3D%220%22%20y%3D%220%22%20height%3D%22100%25%22%20width%3D%22100%25%22/%3E%0A%3C/svg%3E);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    transition: $transition-load;
+    opacity: 1;
+    z-index: 1;
+    background-image: radial-gradient(
+      farthest-corner at 15% 101%,
+      $color-brand-start-radial,
+      $color-brand-end-radial
+    );
     content: " ";
+    will-change: opacity;
   }
 
-  &--loaded {
-    &:before {
-      background-image: url("img/bubbles-xs.jpg");
-      animation: bgfadein $animation-duration;
-
-      @media (min-width: $sm) {
-        background-image: url("img/bubbles-sm.jpg");
-      }
-
-      @media (min-width: $md) {
-        background-image: url("img/bubbles-md.jpg");
-      }
-
-      @media (min-width: $lg) {
-        background-image: url("img/bubbles-lg.jpg");
-      }
-    }
-  }
-
-  &__top {
-    @include fadein;
-
+  &__logo {
     display: flex;
     position: relative;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    z-index: 3;
-    margin: 0 auto;
-    padding: 0 $padding-default;
-    max-width: 650px;
-    height: $splash-top-height-min;
-
-    &__title {
-      @include title;
-
-      margin: $padding-min 0;
-    }
-
-    &__baseline {
-      padding: $padding-min 0 0;
-
-      @media (min-width: $xs) {
-        padding: $padding-default 0 0;
-      }
-    }
-
-    &__contact {
-      position: relative;
-      margin: 20px 0
-        (($splash-footer-icon-height-min / 2) + $splash-footer-icon-padding) +
-        $padding-default;
-      padding-top: 20px;
-
-      &:before {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        z-index: 3;
-        margin-left: -5%;
-        background: $white;
-        width: 10%;
-        height: 1px;
-        content: " ";
-      }
-
-      @media (min-width: $xs) {
-        margin: $padding-min * 2 0
-          (($splash-footer-icon-height / 2) + $splash-footer-icon-padding) +
-          $padding-min * 2;
-        padding: $padding-default;
-      }
-    }
-
-    @media (min-width: $xs) {
-      height: $splash-top-height;
-    }
-  }
-
-  &__footer {
-    display: flex;
-    position: relative;
+    flex: 0 0 100%;
     align-items: center;
     justify-content: center;
-    transition: background 300ms ease-in-out;
-    z-index: 4;
-    padding: 0 $padding-default;
-    height: 100% - $splash-top-height-min;
-    color: $color-brand-5;
-    will-change: background;
+    transition: $transition-load;
+    transition-delay: $transition-load-open-delay;
+    z-index: 2;
+    overflow: hidden;
+    animation: fadein 5s;
+    will-change: flex, background;
 
-    &__social {
-      position: absolute;
-      top: -($splash-footer-icon-height-min / 2 + $splash-footer-icon-padding);
-      right: 0;
-      left: 0;
-      z-index: 5;
+    .home--loaded & {
+      flex: 0 0 50%;
+      background: $white;
 
-      &__item {
-        display: inline-block;
-        margin: 0 5px;
-        border-radius: 50%;
-        background: $white;
-        padding: $splash-footer-icon-padding;
-        width: $splash-footer-icon-height-min;
-        height: $splash-footer-icon-height-min;
-
-        &__link {
-          @include fadein;
-
-          display: block;
-          transition: transform 200ms;
-          outline: 0;
-          fill: $color-brand-2;
-
-          &:hover,
-          &:focus {
-            transform: scale(0.9);
-            fill: $color-brand-5;
-          }
-        }
-
-        @media (min-width: $xs) {
-          margin: 0 30px;
-          width: $splash-footer-icon-height;
-          height: $splash-footer-icon-height;
-        }
-      }
-
-      @media (min-width: $xs) {
-        top: -($splash-footer-icon-height / 2 + $splash-footer-icon-padding);
+      @media (min-width: $sm) {
+        flex: 0 0 50%;
+        background: transparent;
       }
     }
 
-    &__contact {
-      background: $white;
+    &__svg {
+      transition: $transition-load;
+      transition-delay: $transition-load-open-delay;
+      height: 150px;
+      will-change: transform, fill;
+      fill: $white;
 
-      &__content {
-        @include title;
+      .home--loaded & {
+        transform: rotate(360deg);
+        fill: $color-brand-5;
+      }
 
+      @media (min-width: $sm) {
+        height: 100%;
+      }
+    }
+
+    @media (min-width: $sm) {
+      order: 2;
+      margin-top: 0;
+      height: 200px;
+    }
+  }
+
+  &__ribbon {
+    display: flex;
+    flex: 0 0 50%;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: stretch;
+    transition: $transition-load;
+    transition-delay: $transition-load-open-delay;
+    opacity: 0;
+    z-index: 2;
+    background-image: radial-gradient(
+      farthest-corner at 15% 101%,
+      $color-brand-start-radial,
+      $color-brand-end-radial
+    );
+    overflow: hidden;
+    color: $white;
+    will-change: opacity;
+
+    .home--loaded & {
+      opacity: 1;
+    }
+
+    &__content {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+
+      &__title {
+        overflow: hidden;
+        text-align: center;
+        font-size: 12vw;
+        font-weight: 100;
+
+        &__hover {
+          font-weight: 700;
+        }
+
+        @media (min-width: $sm) {
+          font-size: 4vw;
+        }
+
+        @media (min-width: $lg) {
+          font-size: 3.8vw;
+        }
+
+        @media (min-width: $xlg) {
+          font-size: 3vw;
+        }
+      }
+
+      &__subtitle {
+        position: relative;
+        flex: 0 0 auto;
+        padding-bottom: 30px;
+        overflow: hidden;
+        text-align: center;
+        font-size: 7.3vw;
+        font-weight: 100;
+
+        &:after {
+          position: absolute;
+          bottom: 5px;
+          left: 50%;
+          transform: translateX(-50%);
+          opacity: 0.5;
+          background: white;
+          width: 15%;
+          height: 1px;
+          content: " ";
+        }
+
+        @media (min-width: $sm) {
+          font-size: 2.45vw;
+        }
+
+        @media (min-width: $lg) {
+          font-size: 2.3vw;
+        }
+
+        @media (min-width: $xlg) {
+          font-size: 1.8vw;
+        }
+      }
+
+      &__bottom {
         display: flex;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+        flex: 0 0 auto;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        transition: background 300ms ease-in-out;
-        z-index: 1;
-        background: $white;
-        padding-top: $padding-min;
+        justify-content: space-between;
+        justify-self: flex-end;
+        width: 100%;
 
-        &__label {
-          @include fadein;
+        &__ctas {
+          display: flex;
+          flex: 0 0 50%;
+          align-items: center;
+          justify-content: space-around;
+          padding: 25px 0;
+          overflow: hidden;
 
-          position: relative;
+          &__item {
+            display: block;
+            margin: 0 15px;
 
-          &__icon {
-            position: absolute;
-            top: 10px;
-            right: -35px;
-            transform: translateX(-5px);
-            transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
-            opacity: 1;
-            margin-left: 10px;
-            width: 16px;
-            will-change: opacity, transform;
-            fill: $color-brand-5;
+            &:hover,
+            &:focus {
+              outline: 0;
+            }
 
-            @media (min-width: $xs) {
-              top: 12px;
-              right: -45px;
-              width: 20px;
+            &__svg {
+              display: block;
+              transform: scale(0.95);
+              transition: opacity $transition-duration ease-in-out,
+                transform $transition-duration ease-in-out;
+              opacity: 1;
+              cursor: pointer;
+              height: 40px;
+              will-change: opacity, transform;
+              fill: $white;
+
+              .home__ribbon__content__bottom__ctas__item:hover &,
+              .home__ribbon__content__bottom__ctas__item:focus & {
+                transform: scale(1);
+                opacity: 0.5;
+              }
             }
 
             @media (min-width: $sm) {
-              top: 20px;
-              right: -60px;
-              width: 28px;
+              margin: 0 15px 0;
             }
           }
         }
 
-        &.copyable {
-          outline: 0;
+        &__email {
+          display: flex;
+          position: relative;
+          flex: 0 1 50%;
+          align-items: center;
+          justify-content: flex-end;
           cursor: pointer;
+          overflow: visible;
+          font-weight: 300;
 
-          &:focus,
-          &:hover {
-            .splash__footer__contact__content__label__icon {
-              transform: translateX(0);
+          &:hover,
+          &:focus {
+            outline: 0;
+          }
+
+          &__copy {
+            position: absolute;
+            left: -15px;
+            transform: scale(0.8);
+            transition: opacity $transition-duration ease-in-out,
+              left $transition-duration ease-in-out,
+              transform $transition-duration ease-in-out,
+              fill $transition-duration ease-in-out;
+            opacity: 0;
+            width: 14px;
+            height: 14px;
+            will-change: opacity;
+            fill: $white;
+
+            .home__ribbon__content__bottom__email:hover &,
+            .home__ribbon__content__bottom__email:focus & {
+              left: -25px;
+              transform: scale(1);
               opacity: 1;
             }
           }
         }
-
-        &.active {
-          background: $color-brand-1;
-          cursor: default;
-          color: $white;
-          font-size: $font-size-default-min;
-
-          @media (min-width: $sm) {
-            font-size: $font-size-default;
-          }
-        }
-
-        @media (min-width: $sm) {
-          padding-top: $padding-default;
-        }
       }
     }
 
-    @media (min-width: $xs) {
-      height: 100% - $splash-top-height;
+    @media (min-width: $sm) {
+      flex: 0 0 50%;
+      align-items: center;
+      order: 1;
+      height: 100%;
     }
+
+    @media (min-width: $md) {
+      flex: 0 0 45%;
+    }
+  }
+
+  &--loaded {
+    padding-top: 5%;
+
+    &:before {
+      opacity: 0;
+    }
+
+    @media (min-width: $sm) {
+      padding-top: 0;
+    }
+  }
+
+  @media (min-width: $sm) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    background: $white;
   }
 }
