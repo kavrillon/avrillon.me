@@ -1,47 +1,48 @@
+// Imports
 import clipboardCopy from "clipboard-copy";
 
+// Globals
 var ALERT_TIMER;
 
 // Load
 window.onload = function init() {
   loadEvents();
 };
-// Methods
 
 function loadEvents() {
   var ctaEmail = document.querySelector("[data-cta-email]");
-  var body = document.querySelector(".home");
 
-  ctaEmail.addEventListener("keypress", function(e) {
-    var key = e.which || e.keyCode;
-    if (key === 13) {
-      launchCopy(ctaEmail);
-    }
-  });
+  ctaEmail.addEventListener("keypress", launchCopyIfEnterPressed);
+  ctaEmail.addEventListener("click", launchCopy);
 
-  ctaEmail.addEventListener("click", function() {
-    launchCopy(ctaEmail);
-  });
-
-  setTimeout(function() {
-    body.classList.add("loaded");
-  }, 3000);
+  setTimeout(loadHome, 3000);
 }
 
-function launchCopy(button) {
+// Remove the slapshscreen and show home
+function loadHome() {
+  var selectorHome = document.querySelector(".home");
+  selectorHome.classList.add("home--loaded");
+}
+
+// Copy methods: launch copy for keyboard nav
+function launchCopyIfEnterPressed(event) {
+  console.log(event);
+  var key = event.which || event.keyCode;
+  if (key === 13) {
+    launchCopy(event);
+  }
+}
+
+// Copy methods: launch copy if no one has been already launched
+function launchCopy(event) {
   if (ALERT_TIMER) {
     return;
   }
 
-  var previousText = button.innerHTML;
-  clipboardCopy(button.innerText.trim()).then(
+  var previousText = event.target.innerHTML;
+  clipboardCopy(event.target.innerText.trim()).then(
     function() {
-      alertText(
-        button,
-        previousText,
-        "Email copied.<br />Drop me a word!",
-        3000
-      );
+      alertText(event.target, previousText, "Copied, drop me a word!", 3000);
     },
     function() {
       // do nothing
@@ -49,6 +50,7 @@ function launchCopy(button) {
   );
 }
 
+// Show text in div after copy
 function alertText(element, previousText, alertText, timer) {
   element.classList.add("active");
   element.innerHTML = alertText;
