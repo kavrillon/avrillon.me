@@ -144,7 +144,7 @@
       &__subtitle {
         position: relative;
         flex: 0 0 auto;
-        padding-bottom: 30px;
+        padding-bottom: 15px;
         overflow: hidden;
         text-align: center;
         font-size: 7.3vw;
@@ -160,6 +160,10 @@
           width: 15%;
           height: 1px;
           content: " ";
+        }
+
+        @media (min-height: 500px) {
+          padding-bottom: 30px;
         }
 
         @media (min-width: $sm) {
@@ -189,7 +193,7 @@
           flex: 0 0 50%;
           align-items: center;
           justify-content: space-around;
-          padding: 25px 0;
+          padding: 10px 0;
           overflow: hidden;
 
           &__item {
@@ -222,6 +226,10 @@
             @media (min-width: $sm) {
               margin: 0 15px 0;
             }
+          }
+
+          @media (min-height: 500px) {
+            padding: 30px 0;
           }
         }
 
