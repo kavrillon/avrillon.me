@@ -14,11 +14,7 @@
   justify-content: flex-start;
   transition: $transition-load;
   transition-delay: $transition-load-open-delay;
-  background-image: radial-gradient(
-    farthest-corner at 15% 101%,
-    $color-brand-start-radial,
-    $color-brand-end-radial
-  );
+  background-image: $color-brand-end-radial;
   overflow: hidden;
   will-change: padding-top;
 
