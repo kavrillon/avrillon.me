@@ -10,10 +10,14 @@ window.onload = function init() {
 };
 
 function loadEvents() {
-  var ctaEmail = document.querySelector("[data-cta-email]");
+  var ctaEmailButton = document.querySelector("[data-cta-email-button]");
 
-  ctaEmail.addEventListener("keypress", launchCopyIfEnterPressed);
-  ctaEmail.addEventListener("click", launchCopy);
+  ctaEmailButton.addEventListener("keypress", function(e) {
+    launchCopyIfEnterPressed(e, ctaEmailButton);
+  });
+  ctaEmailButton.addEventListener("click", function() {
+    launchCopy(ctaEmailButton);
+  });
 
   setTimeout(loadHome, 3000);
 }
@@ -25,39 +29,29 @@ function loadHome() {
 }
 
 // Copy methods: launch copy for keyboard nav
-function launchCopyIfEnterPressed(event) {
-  console.log(event);
+function launchCopyIfEnterPressed(event, element) {
   var key = event.which || event.keyCode;
   if (key === 13) {
-    launchCopy(event);
+    launchCopy(element);
   }
 }
 
 // Copy methods: launch copy if no one has been already launched
-function launchCopy(event) {
+function launchCopy(element) {
   if (ALERT_TIMER) {
     return;
   }
 
-  var previousText = event.target.innerHTML;
-  clipboardCopy(event.target.innerText.trim()).then(
+  clipboardCopy(element.innerText.trim()).then(
     function() {
-      alertText(event.target, previousText, "Copied, drop me a word!", 3000);
+      element.classList.add("active");
+      setTimeout(function() {
+        element.classList.remove("active");
+        element.blur();
+      }, 5000);
     },
     function() {
       // do nothing
     }
   );
-}
-
-// Show text in div after copy
-function alertText(element, previousText, alertText, timer) {
-  element.classList.add("active");
-  element.innerHTML = alertText;
-
-  ALERT_TIMER = setTimeout(function() {
-    element.classList.remove("active");
-    element.innerHTML = previousText;
-    ALERT_TIMER = null;
-  }, timer);
 }

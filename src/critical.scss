@@ -211,52 +211,107 @@
         }
 
         &__email {
-          display: flex;
           position: relative;
           flex: 0 1 50%;
           align-items: center;
           justify-content: flex-end;
-          cursor: pointer;
           overflow: visible;
-          font-size: 9.2vw;
+          text-align: center;
 
-          &:hover,
-          &:focus {
-            outline: 0;
-          }
-
-          &__copy {
+          &__copied {
             position: absolute;
-            left: -15px;
-            transform: scale(0.8);
-            transition: opacity $transition-duration ease-in-out,
-              left $transition-duration ease-in-out,
-              transform $transition-duration ease-in-out,
-              fill $transition-duration ease-in-out;
-            opacity: 0;
-            width: 14px;
-            height: 14px;
-            will-change: opacity;
-            fill: $white;
+            top: 6px;
+            right: 0;
+            left: 0;
+            z-index: 1;
+            overflow: hidden;
+            font-size: 7.3vw;
 
-            .home__ribbon__content__bottom__email:hover &,
-            .home__ribbon__content__bottom__email:focus & {
-              left: -25px;
-              transform: scale(1);
-              opacity: 1;
+            span {
+              @include transition-children-delay(30, 0s, 30ms);
+
+              display: inline-block;
+              transform: translateY(-100%);
+              transition-duration: 500ms;
+              transition-property: transform, opacity;
+              opacity: 0;
+              will-change: transform, opacity;
+            }
+
+            @media (min-width: $sm), (orientation: landscape) {
+              font-size: 2.46vw;
+            }
+
+            @media (min-width: $lg) {
+              font-size: 2.31vw;
+            }
+
+            @media (min-width: $xlg) {
+              font-size: 1.82vw;
             }
           }
 
-          @media (min-width: $sm), (orientation: landscape) {
-            font-size: 3.1vw;
-          }
+          &__button {
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+            font-size: 9.2vw;
 
-          @media (min-width: $lg) {
-            font-size: 2.9vw;
-          }
+            &:after {
+              position: absolute;
+              right: 0;
+              bottom: -5px;
+              left: 0;
+              transform: scale(0);
+              transition: transform 320ms ease-in-out;
+              background: $white;
+              height: 1px;
+              content: " ";
+              will-change: transform;
+            }
 
-          @media (min-width: $xlg) {
-            font-size: 2.3vw;
+            &:hover,
+            &:focus {
+              outline: 0;
+
+              &:not(.active):after {
+                transform: scale(1);
+              }
+            }
+
+            span {
+              @include transition-children-delay(17, 0s, 30ms);
+
+              display: inline-block;
+              transform: translateY(0);
+              transition-duration: 500ms;
+              transition-property: transform, opacity;
+              will-change: transform, opacity;
+            }
+
+            &.active {
+              span {
+                transform: translateY(100%);
+                opacity: 0;
+              }
+
+              & + .home__ribbon__content__bottom__email__copied span {
+                transform: translateY(0);
+                opacity: 1;
+              }
+            }
+
+            @media (min-width: $sm), (orientation: landscape) {
+              font-size: 3.1vw;
+            }
+
+            @media (min-width: $lg) {
+              font-size: 2.9vw;
+            }
+
+            @media (min-width: $xlg) {
+              font-size: 2.3vw;
+            }
           }
         }
       }
