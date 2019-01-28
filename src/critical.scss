@@ -118,7 +118,6 @@
         overflow: hidden;
         text-align: center;
         font-size: 12vw;
-        font-weight: 100;
 
         &__hover {
           font-weight: 700;
@@ -237,7 +236,6 @@
           justify-content: flex-end;
           cursor: pointer;
           overflow: visible;
-          font-weight: 300;
 
           &:hover,
           &:focus {

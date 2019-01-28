@@ -1,35 +1,18 @@
-/* montserrat-100 - latin */
+/* montserrat-200 - latin */
 @font-face {
   font-family: "Montserrat";
-  font-weight: 100;
+  font-weight: 200;
   font-style: normal;
-  src: url("fonts/montserrat-v12-latin-100.eot"); /* IE9 Compat Modes */
-  src: local("Montserrat Thin"), local("Montserrat-Thin"),
-    url("fonts/montserrat-v12-latin-100.eot?#iefix") format("embedded-opentype"),
-    /* IE6-IE8 */ url("fonts/montserrat-v12-latin-100.woff2") format("woff2"),
-    /* Super Modern Browsers */ url("fonts/montserrat-v12-latin-100.woff")
+  src: url("fonts/montserrat-v12-latin-200.eot"); /* IE9 Compat Modes */
+  src: local("Montserrat ExtraLight"), local("Montserrat-ExtraLight"),
+    url("fonts/montserrat-v12-latin-200.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("fonts/montserrat-v12-latin-200.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("fonts/montserrat-v12-latin-200.woff")
       format("woff"),
-    /* Modern Browsers */ url("fonts/montserrat-v12-latin-100.ttf")
+    /* Modern Browsers */ url("fonts/montserrat-v12-latin-200.ttf")
       format("truetype"),
     /* Safari, Android, iOS */
-      url("fonts/montserrat-v12-latin-100.svg#Montserrat") format("svg"); /* Legacy iOS */
-}
-
-/* montserrat-300 - latin */
-@font-face {
-  font-family: "Montserrat";
-  font-weight: 300;
-  font-style: normal;
-  src: url("fonts/montserrat-v12-latin-300.eot"); /* IE9 Compat Modes */
-  src: local("Montserrat Light"), local("Montserrat-Light"),
-    url("fonts/montserrat-v12-latin-300.eot?#iefix") format("embedded-opentype"),
-    /* IE6-IE8 */ url("fonts/montserrat-v12-latin-300.woff2") format("woff2"),
-    /* Super Modern Browsers */ url("fonts/montserrat-v12-latin-300.woff")
-      format("woff"),
-    /* Modern Browsers */ url("fonts/montserrat-v12-latin-300.ttf")
-      format("truetype"),
-    /* Safari, Android, iOS */
-      url("fonts/montserrat-v12-latin-300.svg#Montserrat") format("svg"); /* Legacy iOS */
+      url("fonts/montserrat-v12-latin-200.svg#Montserrat") format("svg"); /* Legacy iOS */
 }
 
 /* montserrat-regular - latin */
