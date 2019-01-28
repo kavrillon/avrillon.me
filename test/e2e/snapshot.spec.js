@@ -59,7 +59,7 @@ describe("Snapshot", () => {
     });
 
     it("4-should match when focusing email", async () => {
-      await page.focus("[data-cta-email]");
+      await page.focus("[data-cta-email-button]");
       await page.waitFor(100);
       const image = await page.screenshot();
       expect(image).toMatchImageSnapshot(screenshotConfig);
