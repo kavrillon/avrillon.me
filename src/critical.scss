@@ -139,27 +139,9 @@
       &__subtitle {
         position: relative;
         flex: 0 0 auto;
-        padding-bottom: 15px;
         overflow: hidden;
         text-align: center;
         font-size: 7.3vw;
-        font-weight: 100;
-
-        &:after {
-          position: absolute;
-          bottom: 5px;
-          left: 50%;
-          transform: translateX(-50%);
-          opacity: 0.5;
-          background: white;
-          width: 15%;
-          height: 1px;
-          content: " ";
-        }
-
-        @media (min-height: 500px) {
-          padding-bottom: 30px;
-        }
 
         @media (min-width: $sm) {
           font-size: 2.45vw;
@@ -236,6 +218,7 @@
           justify-content: flex-end;
           cursor: pointer;
           overflow: visible;
+          font-size: 9.2vw;
 
           &:hover,
           &:focus {
@@ -262,6 +245,18 @@
               transform: scale(1);
               opacity: 1;
             }
+          }
+
+          @media (min-width: $sm) {
+            font-size: 3.1vw;
+          }
+
+          @media (min-width: $lg) {
+            font-size: 2.9vw;
+          }
+
+          @media (min-width: $xlg) {
+            font-size: 2.3vw;
           }
         }
       }
