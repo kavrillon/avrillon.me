@@ -4,12 +4,12 @@ expect.extend({ toMatchImageSnapshot });
 const commonMethods = require('./utils/lighthouse');
 const url = 'http://localhost:9000';
 
-const THRESHOLD_A11Y = 90; // User scalability is dropped because I don't want to enable it.
+const THRESHOLD_A11Y = 100;
 const THRESHOLD_BEST_PRACTISES = 90; // HTTP/2 not available
 // const THRESHOLD_PERF = 93; // Inconsistencies bewteen local & Travis, due to network differences
 // const THRESHOLD_PAGESPEED = 100; // Inconsistencies bewteen local & Travis, due to network differences
 // const THRESHOLD_PWA = 100; // Not a goal for now
-const THRESHOLD_SEO = 90;
+const THRESHOLD_SEO = 100;
 
 describe('Audit', () => {
   beforeAll(async () => {
