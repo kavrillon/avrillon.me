@@ -1,9 +1,9 @@
 // All critical styles (in the loading viewport)
 
-@import "scss/fonts";
-@import "scss/mixins";
-@import "scss/reset";
-@import "scss/variables";
+@import 'scss/fonts';
+@import 'scss/mixins';
+@import 'scss/reset';
+@import 'scss/variables';
 
 .home {
   display: flex;
@@ -27,12 +27,8 @@
     transition: $transition-load;
     opacity: 1;
     z-index: 1;
-    background-image: radial-gradient(
-      farthest-corner at 15% 101%,
-      $color-brand-start-radial,
-      $color-brand-end-radial
-    );
-    content: " ";
+    background-image: radial-gradient(farthest-corner at 15% 101%, $color-brand-start-radial, $color-brand-end-radial);
+    content: ' ';
     will-change: opacity;
   }
 
@@ -93,11 +89,7 @@
     transition-delay: $transition-load-open-delay;
     opacity: 0;
     z-index: 2;
-    background-image: radial-gradient(
-      farthest-corner at 15% 101%,
-      $color-brand-start-radial,
-      $color-brand-end-radial
-    );
+    background-image: radial-gradient(farthest-corner at 15% 101%, $color-brand-start-radial, $color-brand-end-radial);
     overflow: hidden;
     color: $white;
     will-change: opacity;
@@ -185,8 +177,7 @@
             &__svg {
               display: block;
               transform: scale(0.95);
-              transition: opacity $transition-duration ease-in-out,
-                transform $transition-duration ease-in-out;
+              transition: opacity $transition-duration ease-in-out, transform $transition-duration ease-in-out;
               opacity: 1;
               cursor: pointer;
               height: 40px;
@@ -266,7 +257,7 @@
               transition: transform 320ms ease-in-out;
               background: $white;
               height: 1px;
-              content: " ";
+              content: ' ';
               will-change: transform;
             }
 

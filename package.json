@@ -7,7 +7,7 @@
   "author": "Kevin Avrillon <kevin@avrillon.me>",
   "license": "MIT",
   "devDependencies": {
-    "autoprefixer": "^9.4.7",
+    "autoprefixer": "^9.4.8",
     "clean-webpack-plugin": "^1.0.1",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^2.1.0",
@@ -19,7 +19,7 @@
     "image-webpack-loader": "^4.6.0",
     "jest": "^24.1.0",
     "jest-environment-puppeteer": "^3.9.0",
-    "jest-image-snapshot": "^2.8.0",
+    "jest-image-snapshot": "^2.8.1",
     "lighthouse": "^4.1.0",
     "node-sass": "^4.11.0",
     "npm-run-all": "^4.1.5",
@@ -35,9 +35,19 @@
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "^3.5.3",
     "uglifyjs-webpack-plugin": "^2.1.1",
-    "webpack": "^4.29.3",
+    "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.2.0"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "printWidth": 120,
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "useTabs": false
   },
   "scripts": {
     "build": "yarn build:prod",

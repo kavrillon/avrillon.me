@@ -1,5 +1,5 @@
-@import "variables";
-@import "animations";
+@import 'variables';
+@import 'animations';
 
 @mixin transition-children-delay($length, $base, $step) {
   @for $i from 1 through $length {
