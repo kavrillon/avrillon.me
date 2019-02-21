@@ -1,30 +1,30 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
-const HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin");
-const HtmlWebpackExcludeAssetsPlugin = require("html-webpack-exclude-assets-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const devMode = process.env.NODE_ENV !== "production";
+const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
   devServer: {
-    allowedHosts: [".local"],
+    allowedHosts: ['.local'],
     compress: !devMode,
-    contentBase: "./dist",
-    host: "0.0.0.0",
-    port: 9000
+    contentBase: './dist',
+    host: '0.0.0.0',
+    port: 9000,
   },
-  devtool: devMode ? "source-map" : false,
+  devtool: devMode ? 'source-map' : false,
   entry: {
-    app: "./src/index.js",
-    critical: "./src/critical.scss"
+    app: './src/index.js',
+    critical: './src/critical.scss',
     // styles: "./src/index.scss" // No need for now
   },
-  mode: devMode ? "development" : "production",
+  mode: devMode ? 'development' : 'production',
   module: {
     rules: [
       {
@@ -43,66 +43,64 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           use: [
             {
-              loader: "css-loader", // translates CSS into CommonJS
+              loader: 'css-loader', // translates CSS into CommonJS
               options: {
-                sourceMap: true
-              }
+                sourceMap: true,
+              },
             },
             {
-              loader: "postcss-loader"
+              loader: 'postcss-loader',
             },
             {
-              loader: "sass-loader", // compiles Sass to CSS, using Node Sass by default
+              loader: 'sass-loader', // compiles Sass to CSS, using Node Sass by default
               options: {
-                sourceMap: true
-              }
-            }
-          ]
-        })
+                sourceMap: true,
+              },
+            },
+          ],
+        }),
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
-          "file-loader?outputPath=img&name=" +
-            (devMode ? "[name]" : "[name].[hash:7]") +
-            ".[ext]",
+          'file-loader?outputPath=img&name=' + (devMode ? '[name]' : '[name].[hash:7]') + '.[ext]',
           {
-            loader: "image-webpack-loader",
+            loader: 'image-webpack-loader',
             options: {
               disable: false,
               mozjpeg: {
                 progressive: true,
-                quality: 65
+                quality: 65,
               },
               // optipng.enabled: false will disable optipng
               optipng: {
-                enabled: false
+                enabled: false,
               },
               pngquant: {
-                quality: "65-90",
-                speed: 4
+                quality: '65-90',
+                speed: 4,
               },
               gifsicle: {
-                interlaced: false
-              }
+                interlaced: false,
+              },
               // the webp option will enable WEBP
               /*webp: {
                 quality: 75
               }*/
-            }
-          }
-        ]
+            },
+          },
+        ],
       },
       {
         test: /\.(ttf|eot|woff|woff2)$/,
         use: {
-          loader: "file-loader",
+          loader: 'file-loader',
           options: {
-            name: "fonts/[name].[ext]"
-          }
-        }
-      }
-    ]
+            name: 'fonts/[name].[ext]',
+          },
+        },
+      },
+    ],
   },
   optimization: {
     minimize: devMode ? false : true,
@@ -110,24 +108,24 @@ module.exports = {
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
-        sourceMap: true
+        sourceMap: true,
       }),
-      new OptimizeCSSAssetsPlugin({})
-    ]
+      new OptimizeCSSAssetsPlugin({}),
+    ],
   },
   output: {
-    filename: devMode ? "js/[name].js" : "js/[name].[hash:7].js",
-    path: path.resolve(__dirname, "dist")
+    filename: devMode ? 'js/[name].js' : 'js/[name].[hash:7].js',
+    path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
-    new CleanWebpackPlugin(["dist"]),
+    new CleanWebpackPlugin(['dist']),
     new ExtractTextPlugin({
-      filename: devMode ? "css/[name].css" : "css/[name].[hash:7].css"
+      filename: devMode ? 'css/[name].css' : 'css/[name].[hash:7].css',
     }),
     new HtmlWebpackPlugin({
       excludeAssets: [/critical.*.js/, /styles.*.js/],
       inlineSource: /critical.*.css$/,
-      filename: "index.html",
+      filename: 'index.html',
       minify: devMode
         ? false
         : {
@@ -135,51 +133,51 @@ module.exports = {
             removeComments: true,
             removeRedundantAttributes: true,
             removeScriptTypeAttributes: true,
-            removeStyleLinkTypeAttributes: true
+            removeStyleLinkTypeAttributes: true,
           },
-      template: "src/index.html"
+      template: 'src/index.html',
     }),
     new HtmlWebpackInlineSourcePlugin(),
     new HtmlWebpackExcludeAssetsPlugin(),
     new CopyWebpackPlugin(
       [
         {
-          from: "./CNAME",
-          to: "CNAME",
-          toType: "file"
-        }
+          from: './CNAME',
+          to: 'CNAME',
+          toType: 'file',
+        },
       ],
-      {}
+      {},
     ),
     new CopyWebpackPlugin(
       [
         {
-          from: "./site.webmanifest",
-          to: "site.webmanifest",
-          toType: "file"
-        }
+          from: './site.webmanifest',
+          to: 'site.webmanifest',
+          toType: 'file',
+        },
       ],
-      {}
+      {},
     ),
     new CopyWebpackPlugin(
       [
         {
-          from: "./browserconfig.xml",
-          to: "browserconfig.xml",
-          toType: "file"
-        }
+          from: './browserconfig.xml',
+          to: 'browserconfig.xml',
+          toType: 'file',
+        },
       ],
-      {}
+      {},
     ),
     new CopyWebpackPlugin(
       [
         {
-          from: "./src/img/favicon.ico",
-          to: "favicon.ico",
-          toType: "file"
-        }
+          from: './src/img/favicon.ico',
+          to: 'favicon.ico',
+          toType: 'file',
+        },
       ],
-      {}
-    )
-  ]
+      {},
+    ),
+  ],
 };

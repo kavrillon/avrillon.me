@@ -2,7 +2,7 @@
 // https://jestjs.io/docs/en/configuration.html
 
 module.exports = {
-  globalSetup: "jest-environment-puppeteer/setup",
-  globalTeardown: "jest-environment-puppeteer/teardown",
-  testEnvironment: "jest-environment-puppeteer"
+  globalSetup: 'jest-environment-puppeteer/setup',
+  globalTeardown: 'jest-environment-puppeteer/teardown',
+  testEnvironment: 'jest-environment-puppeteer',
 };
