@@ -1,5 +1,5 @@
 // Imports
-import clipboardCopy from "clipboard-copy";
+import clipboardCopy from 'clipboard-copy';
 
 // Globals
 var ALERT_TIMER;
@@ -10,12 +10,12 @@ window.onload = function init() {
 };
 
 function loadEvents() {
-  var ctaEmailButton = document.querySelector("[data-cta-email-button]");
+  var ctaEmailButton = document.querySelector('[data-cta-email-button]');
 
-  ctaEmailButton.addEventListener("keypress", function(e) {
+  ctaEmailButton.addEventListener('keypress', function(e) {
     launchCopyIfEnterPressed(e, ctaEmailButton);
   });
-  ctaEmailButton.addEventListener("click", function() {
+  ctaEmailButton.addEventListener('click', function() {
     launchCopy(ctaEmailButton);
   });
 
@@ -24,8 +24,8 @@ function loadEvents() {
 
 // Remove the slapshscreen and show home
 function loadHome() {
-  var selectorHome = document.querySelector(".home");
-  selectorHome.classList.add("home--loaded");
+  var selectorHome = document.querySelector('.home');
+  selectorHome.classList.add('home--loaded');
 }
 
 // Copy methods: launch copy for keyboard nav
@@ -44,14 +44,14 @@ function launchCopy(element) {
 
   clipboardCopy(element.innerText.trim()).then(
     function() {
-      element.classList.add("active");
+      element.classList.add('active');
       setTimeout(function() {
-        element.classList.remove("active");
+        element.classList.remove('active');
         element.blur();
       }, 5000);
     },
     function() {
       // do nothing
-    }
+    },
   );
 }
