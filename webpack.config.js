@@ -20,7 +20,7 @@ module.exports = {
   },
   devtool: devMode ? 'source-map' : false,
   entry: {
-    app: './src/index.js',
+    app: './src/index.ts',
     critical: './src/critical.scss',
     // styles: "./src/index.scss" // No need for now
   },
@@ -28,15 +28,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: [path.resolve(__dirname, 'node_modules')],
-        use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
-            presets: ['@babel/preset-env'],
-          },
-        },
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
       {
         test: /\.scss$/,
@@ -180,4 +174,7 @@ module.exports = {
       {},
     ),
   ],
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
 };

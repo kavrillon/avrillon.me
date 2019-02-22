@@ -1,14 +1,12 @@
 // Imports
-import clipboardCopy from 'clipboard-copy';
 
-// Globals
-let ALERT_TIMER;
+import clipboardCopy from 'clipboard-copy';
 
 // Load
 window.onload = loadEvents;
 
 function loadEvents() {
-  const ctaEmailButton = document.querySelector('[data-cta-email-button]');
+  const ctaEmailButton: HTMLElement = document.querySelector('[data-cta-email-button]');
 
   ctaEmailButton.addEventListener('keypress', e => {
     launchCopyIfEnterPressed(e, ctaEmailButton);
@@ -27,7 +25,7 @@ function loadHome() {
 }
 
 // Copy methods: launch copy for keyboard nav
-function launchCopyIfEnterPressed(event, element) {
+function launchCopyIfEnterPressed(event: KeyboardEvent, element: HTMLElement) {
   const key = event.which || event.keyCode;
   if (key === 13) {
     launchCopy(element);
@@ -35,11 +33,7 @@ function launchCopyIfEnterPressed(event, element) {
 }
 
 // Copy methods: launch copy if no one has been already launched
-function launchCopy(element) {
-  if (ALERT_TIMER) {
-    return;
-  }
-
+function launchCopy(element: HTMLElement) {
   clipboardCopy(element.innerText.trim()).then(
     () => {
       element.classList.add('active');
