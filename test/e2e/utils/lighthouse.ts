@@ -1,7 +1,7 @@
 const lighthouse = require('lighthouse');
 
 module.exports = {
-  async lighthouseAudit(browser, url) {
+  async lighthouseAudit(browser: any, url: string) {
     jest.setTimeout(100000);
     let lhr = await lighthouse(url, {
       port: new URL(browser.wsEndpoint()).port,
@@ -12,7 +12,7 @@ module.exports = {
   },
 
   // scrape data from a Lighthouse audit for asserting against
-  async getResult(lhr, property) {
+  async getResult(lhr: any, property: any) {
     const propertyType = new Map()
       .set('contrast', await lhr.lhr.audits['color-contrast'].score)
       .set('vulnerabilities', await lhr.lhr.audits['no-vulnerable-libraries'].score)
@@ -36,7 +36,7 @@ module.exports = {
     return result;
   },
 
-  async getLighthouseResult(lhr, property) {
+  async getLighthouseResult(lhr: any, property: any) {
     const jsonProperty = new Map()
       .set('accessibility', (await lhr.lhr.categories.accessibility.score) * 100)
       .set('performance', (await lhr.lhr.categories.performance.score) * 100)
