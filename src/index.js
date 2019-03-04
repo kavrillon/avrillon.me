@@ -8,6 +8,12 @@ let ALERT_TIMER;
 window.onload = loadEvents;
 
 function loadEvents() {
+  // Service worker
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('../sw.js');
+  }
+
+  // Email
   const ctaEmailButton = document.querySelector('[data-cta-email-button]');
 
   ctaEmailButton.addEventListener('keypress', e => {

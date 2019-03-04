@@ -7,6 +7,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const devMode = process.env.NODE_ENV !== 'production';
 
@@ -179,5 +180,9 @@ module.exports = {
       ],
       {},
     ),
+    new WorkboxPlugin.InjectManifest({
+      swSrc: './src/sw.js',
+      swDest: 'sw.js',
+    }),
   ],
 };
