@@ -119,7 +119,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(),
     new ExtractTextPlugin({
       filename: devMode ? 'css/[name].css' : 'css/[name].[hash:7].css',
     }),

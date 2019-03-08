@@ -1,9 +1,9 @@
-workbox.skipWaiting();
-workbox.clientsClaim();
-
 workbox.setConfig({
   debug: false,
 });
+
+workbox.core.skipWaiting();
+workbox.core.clientsClaim();
 
 workbox.routing.registerRoute(/\.(?:js|css|html)$/, new workbox.strategies.StaleWhileRevalidate());
 workbox.routing.registerRoute(
