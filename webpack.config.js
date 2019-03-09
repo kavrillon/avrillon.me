@@ -8,6 +8,7 @@ const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin
 const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 
 const devMode = process.env.NODE_ENV !== 'production';
 
@@ -147,11 +148,6 @@ module.exports = {
         toType: 'file',
       },
       {
-        from: './site.webmanifest',
-        to: 'site.webmanifest',
-        toType: 'file',
-      },
-      {
         from: './browserconfig.xml',
         to: 'browserconfig.xml',
         toType: 'file',
@@ -162,6 +158,29 @@ module.exports = {
         toType: 'file',
       },
     ]),
+    new WebpackPwaManifest({
+      name: 'Avrillon.me',
+      short_name: 'Avrillon.me',
+      theme_color: '#013d46',
+      display: 'standalone',
+      orientation: 'portrait',
+      description:
+        "I'm Kevin Avrillon, a web engineer, freelancer, and web lover.Let me help you building amazing things !",
+      background_color: '#013d46',
+      start_url: '.',
+      icons: [
+        {
+          src: 'src/img/android-chrome-192x192.png',
+          sizes: '192x192',
+          type: 'image/png',
+        },
+        {
+          src: 'src/img/android-chrome-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
+        },
+      ],
+    }),
     new WorkboxPlugin.InjectManifest({
       // Inject service worker
       swSrc: './src/sw.js',
