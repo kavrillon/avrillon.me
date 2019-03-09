@@ -119,7 +119,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin(), // Remove dist folder
     new ExtractTextPlugin({
       filename: devMode ? 'css/[name].css' : 'css/[name].[hash:7].css',
     }),
@@ -138,49 +138,32 @@ module.exports = {
           },
       template: 'src/index.html',
     }),
-    new HtmlWebpackInlineSourcePlugin(),
+    new HtmlWebpackInlineSourcePlugin(), // Inline critical CSS
     new HtmlWebpackExcludeAssetsPlugin(),
-    new CopyWebpackPlugin(
-      [
-        {
-          from: './CNAME',
-          to: 'CNAME',
-          toType: 'file',
-        },
-      ],
-      {},
-    ),
-    new CopyWebpackPlugin(
-      [
-        {
-          from: './site.webmanifest',
-          to: 'site.webmanifest',
-          toType: 'file',
-        },
-      ],
-      {},
-    ),
-    new CopyWebpackPlugin(
-      [
-        {
-          from: './browserconfig.xml',
-          to: 'browserconfig.xml',
-          toType: 'file',
-        },
-      ],
-      {},
-    ),
-    new CopyWebpackPlugin(
-      [
-        {
-          from: './src/img/favicon.ico',
-          to: 'favicon.ico',
-          toType: 'file',
-        },
-      ],
-      {},
-    ),
+    new CopyWebpackPlugin([
+      {
+        from: './CNAME',
+        to: 'CNAME',
+        toType: 'file',
+      },
+      {
+        from: './site.webmanifest',
+        to: 'site.webmanifest',
+        toType: 'file',
+      },
+      {
+        from: './browserconfig.xml',
+        to: 'browserconfig.xml',
+        toType: 'file',
+      },
+      {
+        from: './src/img/favicon.ico',
+        to: 'favicon.ico',
+        toType: 'file',
+      },
+    ]),
     new WorkboxPlugin.InjectManifest({
+      // Inject service worker
       swSrc: './src/sw.js',
       swDest: 'sw.js',
       exclude: [/^CNAME$/],
