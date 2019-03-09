@@ -1,0 +1,22 @@
+{
+  "icons": [
+    {
+      "src": "icon_512x512.fbca1b0d83602da179893c107286b9cb.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icon_192x192.609c05521c5d0abdf3d5d4c979b7af3f.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "name": "Avrillon.me",
+  "short_name": "Avrillon.me",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "theme_color": "#013d46",
+  "description": "I'm Kevin Avrillon, a web engineer, freelancer, and web lover.Let me help you building amazing things!",
+  "background_color": "#013d46"
+}
