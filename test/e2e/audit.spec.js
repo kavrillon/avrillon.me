@@ -5,10 +5,10 @@ const commonMethods = require('./utils/lighthouse');
 const url = 'http://localhost:9000';
 
 const THRESHOLD_A11Y = 100;
-const THRESHOLD_BEST_PRACTISES = 90; // HTTP/2 not available
+const THRESHOLD_BEST_PRACTISES = 90; // HTTP/2 not available on local testing
 // const THRESHOLD_PERF = 93; // Inconsistencies bewteen local & Travis, due to network differences
 // const THRESHOLD_PAGESPEED = 100; // Inconsistencies bewteen local & Travis, due to network differences
-// const THRESHOLD_PWA = 100; // Not a goal for now
+const THRESHOLD_PWA = 90; // Some errors on local testing
 const THRESHOLD_SEO = 100;
 
 describe('Audit', () => {
@@ -45,11 +45,11 @@ describe('Audit', () => {
 
   // These checks validate the aspects of a Progressive Web App,
   // as specified by the baseline [PWA Checklist]
-  /* it('passes a Progressive Web App audit through Lighthouse', async () => {
+  it('passes a Progressive Web App audit through Lighthouse', async () => {
     const progressiveWebAppScore = await commonMethods.getLighthouseResult(lhr, 'progressiveWebApp');
     // Tester can set their own thresholds for pass marks
     expect(progressiveWebAppScore).toBeGreaterThanOrEqual(THRESHOLD_PWA);
-  }); */
+  });
 
   //These checks ensure that your page is optimized for search engine results ranking.
   it('passes an SEO audit through Lighthouse', async () => {
