@@ -148,11 +148,6 @@ module.exports = {
         toType: 'file',
       },
       {
-        from: './browserconfig.xml',
-        to: 'browserconfig.xml',
-        toType: 'file',
-      },
-      {
         from: './src/img/favicon.ico',
         to: 'favicon.ico',
         toType: 'file',
