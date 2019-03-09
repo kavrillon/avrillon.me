@@ -160,7 +160,7 @@ module.exports = {
       display: 'standalone',
       orientation: 'portrait',
       description:
-        "I'm Kevin Avrillon, a web engineer, freelancer, and web lover.Let me help you building amazing things !",
+        "I'm Kevin Avrillon, a web engineer, freelancer, and web lover.Let me help you building amazing things!",
       background_color: '#013d46',
       start_url: '.',
       icons: [
