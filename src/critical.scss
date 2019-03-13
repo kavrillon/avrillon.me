@@ -22,7 +22,7 @@
   justify-content: flex-start;
   transition: $transition-load;
   transition-delay: $transition-load-open-delay;
-  background-image: $color-brand-end-radial;
+  background: $color-brand-end-radial;
   overflow: hidden;
   will-change: padding-top;
 
