@@ -1,0 +1,48 @@
+// Component Logo
+
+.logo {
+  display: flex;
+  position: relative;
+  flex: 0 0 100%;
+  align-items: center;
+  justify-content: center;
+  transition: $transition-load;
+  transition-delay: $transition-load-open-delay;
+  z-index: 2;
+  overflow: hidden;
+  animation: fadein 5s;
+  will-change: flex, background;
+
+  .home--loaded & {
+    flex: 0 0 50%;
+    background: $white;
+
+    @media (min-width: $sm), (orientation: landscape) {
+      flex: 0 0 50%;
+      background: transparent;
+    }
+  }
+
+  &__svg {
+    transition: $transition-load;
+    transition-delay: $transition-load-open-delay;
+    height: 150px;
+    will-change: transform, fill;
+    fill: $white;
+
+    .home--loaded & {
+      transform: rotate(360deg);
+      fill: $color-brand-5;
+    }
+
+    @media (min-width: $sm), (orientation: landscape) {
+      height: 100%;
+    }
+  }
+
+  @media (min-width: $sm), (orientation: landscape) {
+    order: 2;
+    margin-top: 0;
+    height: 200px;
+  }
+}
