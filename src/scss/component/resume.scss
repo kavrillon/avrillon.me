@@ -1,0 +1,75 @@
+// Component Resume
+
+.resume {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+
+  &__title {
+    overflow: hidden;
+    text-align: center;
+    font-size: 12vw;
+
+    &__hover {
+      font-weight: 700;
+    }
+
+    @media (min-width: $sm), (orientation: landscape) {
+      font-size: 4vw;
+    }
+
+    @media (min-width: $lg) {
+      font-size: 3.8vw;
+    }
+
+    @media (min-width: $xlg) {
+      font-size: 3vw;
+    }
+  }
+
+  &__subtitle {
+    position: relative;
+    flex: 0 0 auto;
+    overflow: hidden;
+    text-align: center;
+    font-size: 7.3vw;
+
+    @media (min-width: $sm), (orientation: landscape) {
+      font-size: 2.45vw;
+    }
+
+    @media (min-width: $lg) {
+      font-size: 2.3vw;
+    }
+
+    @media (min-width: $xlg) {
+      font-size: 1.8vw;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    justify-self: flex-end;
+    width: 100%;
+
+    &__ctas {
+      display: flex;
+      flex: 0 0 50%;
+      align-items: center;
+      justify-content: space-around;
+      padding: 10px 0;
+      overflow: hidden;
+
+      @media (min-height: 500px), (orientation: landscape) {
+        padding: 20px 0;
+      }
+    }
+  }
+}

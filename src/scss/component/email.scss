@@ -1,0 +1,131 @@
+// Component Email
+
+.email {
+  position: relative;
+  flex: 0 1 50%;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: visible;
+  text-align: center;
+
+  &__copied {
+    position: absolute;
+    top: 6px;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+    font-size: 7.3vw;
+
+    span {
+      @include transition-children-delay(30, $transition-copied-delay, $transition-copied-step);
+
+      display: inline-block;
+      transform: translateY(-100%);
+      transition-duration: 500ms;
+      transition-property: transform, opacity;
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+
+    @media (min-width: $sm), (orientation: landscape) {
+      font-size: 2.35vw;
+    }
+
+    @media (min-width: $lg) {
+      font-size: 2.25vw;
+    }
+
+    @media (min-width: $xlg) {
+      font-size: 1.8vw;
+    }
+  }
+
+  &__button {
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    font-size: 9.2vw;
+
+    &:before,
+    &:after {
+      position: absolute;
+      right: 0;
+      bottom: -5px;
+      left: 0;
+      transform: scale(1);
+      transform-origin: center left;
+      transition: transform 320ms ease-in-out;
+      transition-delay: 900ms;
+      opacity: 0.7;
+      background: $white;
+      height: 1px;
+      content: ' ';
+      will-change: transform;
+    }
+
+    &:before {
+      bottom: -6px;
+      transform: scale(0);
+      transition-delay: 0ms;
+      opacity: 1;
+    }
+
+    &:hover,
+    &:focus {
+      outline: 0;
+
+      &:not(.active):before {
+        transform: scale(1);
+        height: 3px;
+
+        // For touch screens
+        @media (hover: none) {
+          transform: scale(0);
+          height: 1px;
+        }
+      }
+    }
+
+    span {
+      @include transition-children-delay(17, $transition-copied-delay, $transition-copied-step);
+
+      display: inline-block;
+      transform: translateY(0);
+      transition-duration: 500ms;
+      transition-property: transform, opacity;
+      will-change: transform, opacity;
+    }
+
+    &.active {
+      &:before,
+      &:after {
+        transform: scale(0);
+        transform-origin: center right;
+        transition-delay: 0ms;
+      }
+
+      span {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+
+      & + .email__copied span {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @media (min-width: $sm), (orientation: landscape) {
+      font-size: 3.1vw;
+    }
+
+    @media (min-width: $lg) {
+      font-size: 2.9vw;
+    }
+
+    @media (min-width: $xlg) {
+      font-size: 2.3vw;
+    }
+  }
+}
