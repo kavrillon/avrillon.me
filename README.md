@@ -1,7 +1,5 @@
 # avrillon.me
 
-[![Build Status](https://travis-ci.com/kavrillon/avrillon.me.svg?branch=master)](https://travis-ci.com/kavrillon/avrillon.me)
-
 ## Installation
 
 `yarn install`: install all dependencies
