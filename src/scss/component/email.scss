@@ -44,8 +44,14 @@
   &__button {
     position: relative;
     z-index: 2;
+    border: 0;
+    background: transparent;
     cursor: pointer;
+    padding: 0;
+    color: $white;
+    font-family: inherit;
     font-size: 9.2vw;
+    font-weight: 300;
 
     &:before,
     &:after {
