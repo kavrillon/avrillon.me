@@ -67,11 +67,12 @@
     "start": "yarn start:dev",
     "start:dev": "webpack-dev-server --progress --colors",
     "start:prod": "NODE_ENV=production webpack-dev-server",
-    "test": "yarn test:e2e",
-    "test:e2e": "jest",
+    "test": "make test",
+    "test:e2e": "jest test/e2e/ --color=always",
     "test:e2e:audit": "jest test/e2e/audit.spec.js --detectOpenHandles",
     "test:e2e:dom": "jest test/e2e/dom.spec.js",
-    "test:e2e:snapshot": "jest test/e2e/snapshot.spec.js"
+    "test:e2e:snapshot": "jest test/e2e/snapshot.spec.js",
+    "validate": "make validate"
   },
   "dependencies": {
     "clipboard-copy": "^3.0.0"

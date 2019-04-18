@@ -1,0 +1,16 @@
+# Ignore all files by default
+*
+
+# White list only the required files
+!src/
+!test/
+!.browserslistrc
+!CNAME
+!.prettierignore
+!.stylelintrc
+!jest-puppeteer.config.js
+!jest.config.js
+!package.json
+!postcss.config.js
+!webpack.config.js
+!yarn.lock
