@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: 'yarn test:e2e'
+    environment:
+      - CI=true
+    volumes:
+      - ./test/e2e:/app/test/e2e
+  validate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: 'yarn test:e2e -u'
+    environment:
+      - CI=true
+    volumes:
+      - ./test/e2e:/app/test/e2e

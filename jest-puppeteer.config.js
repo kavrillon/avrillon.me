@@ -1,5 +1,6 @@
 module.exports = {
   launch: {
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
     dumpio: false, // Hide default browser process stdout
     headless: true,
   },
