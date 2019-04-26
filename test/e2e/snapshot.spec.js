@@ -28,11 +28,19 @@ describe('Snapshot', () => {
       const image = await page.screenshot();
       expect(image).toMatchImageSnapshot(screenshotConfig);
     });
+
+    it('3-should match when offline', async () => {
+      await page.setOfflineMode(true);
+      await page.waitFor(1500);
+      const image = await page.screenshot();
+      expect(image).toMatchImageSnapshot(screenshotConfig);
+    });
   });
 
   describe('2-Desktop', () => {
     beforeAll(async () => {
       await page.setViewport({ width: 1440, height: 900 });
+      await page.setOfflineMode(false);
     });
 
     it('1-should match on home loaded', async () => {
@@ -51,6 +59,13 @@ describe('Snapshot', () => {
     it('3-should match when focusing email', async () => {
       await page.focus('[data-cta-email-button]');
       await page.waitFor(500);
+      const image = await page.screenshot();
+      expect(image).toMatchImageSnapshot(screenshotConfig);
+    });
+
+    it('3-should match when offline', async () => {
+      await page.setOfflineMode(true);
+      await page.waitFor(1500);
       const image = await page.screenshot();
       expect(image).toMatchImageSnapshot(screenshotConfig);
     });

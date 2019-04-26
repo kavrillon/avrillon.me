@@ -5,14 +5,24 @@ import clipboardCopy from 'clipboard-copy';
 let ALERT_TIMER;
 
 // Load
-window.onload = loadEvents;
+window.onload = init;
 
-function loadEvents() {
-  // Service worker
+function init() {
+  // Service worker registration
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('../sw.js');
   }
 
+  // Network detection
+  setNetworkMode(isOnline());
+
+  // Loading
+  bindEvents();
+  setTimeout(loadHome, 3000);
+}
+
+// Global event binding
+function bindEvents() {
   // Email
   const ctaEmailButton = document.querySelector('[data-cta-email-button]');
 
@@ -23,10 +33,27 @@ function loadEvents() {
     launchCopy(ctaEmailButton);
   });
 
-  setTimeout(loadHome, 3000);
+  // Network binding
+  window.addEventListener('online', () => setNetworkMode(true));
+  window.addEventListener('offline', () => setNetworkMode(false));
 }
 
-// Remove the slapshscreen and show home
+// Return true if online, else otherwise
+function isOnline() {
+  return navigator.onLine;
+}
+
+// Set the mode of the app visually (online/offline)
+function setNetworkMode(isOnline) {
+  const selectorHome = document.querySelector('.home');
+  if (isOnline) {
+    selectorHome.classList.remove('home--offline');
+  } else {
+    selectorHome.classList.add('home--offline');
+  }
+}
+
+// Remove the splashscreen and show home
 function loadHome() {
   const selectorHome = document.querySelector('.home');
   selectorHome.classList.add('home--loaded');
