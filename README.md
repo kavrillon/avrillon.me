@@ -15,10 +15,10 @@
 
 ## Testing
 
-There are some e2e tests running with Puppeeter (screenshot validation). 
+There are some e2e tests running with Puppeeter (screenshot validation).
 To avoid visual differences between environments (especially with [font rendering](https://www.smashingmagazine.com/2012/04/a-closer-look-at-font-rendering/)), e2e tests are running on Docker, so you'll need to install it if you want to run them on your side with `yarn test`.  
 These tests will be ran the same way on the CI (with CircleCI), it guaranty consistency on screenshots.
-You can still run them on your side if you really really need it: `yarn test:e2e`. 
+You can still run them on your side if you really really need it: `yarn test:e2e`.
 
 ## Deployment
 
