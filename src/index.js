@@ -5,14 +5,21 @@ import clipboardCopy from 'clipboard-copy';
 let ALERT_TIMER;
 
 // Load
-window.onload = loadEvents;
+window.onload = init;
 
-function loadEvents() {
-  // Service worker
+function init() {
+  // Service worker registration
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('../sw.js');
   }
 
+  // Loading
+  bindEvents();
+  setTimeout(loadHome, 3000);
+}
+
+// Global event binding
+function bindEvents() {
   // Email
   const ctaEmailButton = document.querySelector('[data-cta-email-button]');
 
@@ -23,13 +30,51 @@ function loadEvents() {
     launchCopy(ctaEmailButton);
   });
 
-  setTimeout(loadHome, 3000);
+  // Network binding
+  window.addEventListener('online', () => setNetworkMode(true, true));
+  window.addEventListener('offline', () => setNetworkMode(false, true));
 }
 
-// Remove the slapshscreen and show home
+// Set the network mode (class + notif)
+function setNetworkMode(isOnline, notify) {
+  if (notify) {
+    notifyNetworkChange(isOnline);
+  }
+  setNetworkClass(isOnline);
+}
+
+// Notify the network change (online/offline)
+function notifyNetworkChange(isOnline) {
+  const selectorHome = document.querySelector('.home');
+  selectorHome.classList.remove('home--notify-offline', 'home--notify-online');
+  if (isOnline) {
+    selectorHome.classList.add('home--notify-online');
+  } else {
+    selectorHome.classList.add('home--notify-offline');
+  }
+}
+
+// Set the mode of the app visually (online/offline)
+function setNetworkClass(isOnline) {
+  const selectorHome = document.querySelector('.home');
+  selectorHome.classList.remove('home--offline', 'home--online');
+  if (isOnline) {
+    selectorHome.classList.add('home--online');
+  } else {
+    selectorHome.classList.add('home--offline');
+  }
+}
+
+// Remove the splashscreen and show home
 function loadHome() {
   const selectorHome = document.querySelector('.home');
   selectorHome.classList.add('home--loaded');
+
+  // Network detection (notify when offline)
+  setTimeout(() => {
+    const isOnline = navigator.onLine;
+    setNetworkMode(isOnline, !isOnline);
+  }, 2000);
 }
 
 // Copy methods: launch copy for keyboard nav

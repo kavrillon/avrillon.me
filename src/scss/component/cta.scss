@@ -4,6 +4,7 @@
   box-sizing: border-box;
   display: block;
   position: relative;
+  transition: opacity $transition-default-effect $transition-default-duration;
   margin: 0 15px;
   border-radius: 100%;
   padding: 0;

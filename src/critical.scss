@@ -40,6 +40,10 @@
     will-change: opacity;
   }
 
+  &--offline {
+    filter: grayscale(1);
+  }
+
   &__ribbon {
     display: flex;
     flex: 0 0 50%;

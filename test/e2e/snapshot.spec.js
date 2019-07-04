@@ -18,39 +18,48 @@ describe('Snapshot', () => {
     await page.goto(url);
   });
 
-  describe('1-Mobile', () => {
+  describe('Mobile', () => {
     beforeAll(async () => {
       await page.emulate(devices['iPhone 5']);
     });
 
-    it('1-should match on home loaded', async () => {
-      await page.waitFor(5100);
+    it('should match on home loaded', async () => {
+      await page.waitFor(5100); // Wait for the loading animation
       const image = await page.screenshot();
       expect(image).toMatchImageSnapshot(screenshotConfig);
     });
   });
 
-  describe('2-Desktop', () => {
+  describe('Desktop', () => {
     beforeAll(async () => {
       await page.setViewport({ width: 1440, height: 900 });
+      await page.setOfflineMode(false);
+      await page.waitFor(10000); // Wait for the notification animation
     });
 
-    it('1-should match on home loaded', async () => {
-      await page.waitFor(5100);
+    it('should match on home loaded', async () => {
       const image = await page.screenshot();
       expect(image).toMatchImageSnapshot(screenshotConfig);
     });
 
-    it('2-should match when focusing action', async () => {
+    it('should match when focusing action', async () => {
       await page.focus('[data-cta]');
       await page.waitFor(500);
       const image = await page.screenshot();
       expect(image).toMatchImageSnapshot(screenshotConfig);
     });
 
-    it('3-should match when focusing email', async () => {
-      await page.focus('[data-cta-email-button]');
-      await page.waitFor(500);
+    it('should match when going offline', async () => {
+      await page.setOfflineMode(true);
+      await page.waitFor(1500);
+      const image = await page.screenshot();
+      expect(image).toMatchImageSnapshot(screenshotConfig);
+    });
+
+    it('should match when going online', async () => {
+      await page.waitFor(10000);
+      await page.setOfflineMode(false);
+      await page.waitFor(1500);
       const image = await page.screenshot();
       expect(image).toMatchImageSnapshot(screenshotConfig);
     });
