@@ -31,3 +31,7 @@ You can still run them on your side if you really really need it: `yarn test:e2e
 - https://github.com/redbadger/Puppeteer-lighthouse-jest/blob/master/tests/lighthouse.test.js
 - Some Puppeteer samples: https://github.com/checkly/puppeteer-examples
 - Favicon generator: https://realfavicongenerator.net
+
+#TOREMOVE - TODO
+
+- un SVG unique

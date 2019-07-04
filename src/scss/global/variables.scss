@@ -1,4 +1,9 @@
 // Global colors
+
+$black: #000;
+$white: #fff;
+
+// Contextualized colors
 $color-brand-1: #00c9a7;
 $color-brand-2: #00afa6;
 $color-brand-3: #00949c;
@@ -8,9 +13,6 @@ $color-brand-6: #2f4858;
 
 $color-brand-start-radial: $color-brand-4;
 $color-brand-end-radial: #013d46;
-
-$black: #000;
-$white: #fff;
 
 // Global paddings
 $padding-default: 30px;
@@ -27,6 +29,8 @@ $font-family-default: 'Montserrat', sans-serif;
 $radius-default: 0;
 
 // Global Animations
+$transition-default-duration: 500ms;
+$transition-default-effect: ease-in-out;
 $animation-duration: 1s;
 $transition-duration: 120ms;
 $transition-load: all 1000ms ease-in-out;
