@@ -1,5 +1,5 @@
 # Dockerfile
-FROM node:10-slim
+FROM node:11-slim
 
 RUN apt-get update -y && \
   apt-get install ca-certificates \
