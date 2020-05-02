@@ -14,17 +14,17 @@
       content="developer,freelance,web,ux,design,integration,engineer,frontend,backend,quality,accessibility,craftman"
     />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="<%= require('./img/apple-touch-icon.png') %>" />
-    <link rel="icon" type="image/png" sizes="32x32" href="<%= require('./img/favicon-32x32.png') %>" />
-    <link rel="icon" type="image/png" sizes="16x16" href="<%= require('./img/favicon-16x16.png') %>" />
-    <link rel="mask-icon" href="<%= require('./img/safari-pinned-tab.svg') %>" color="#017a8b" />
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= require('./img/apple-touch-icon.png').default %>" />
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= require('./img/favicon-32x32.png').default %>" />
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= require('./img/favicon-16x16.png').default %>" />
+    <link rel="mask-icon" href="<%= require('./img/safari-pinned-tab.svg').default %>" color="#017a8b" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="theme-color" content="#013d46" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
     <!-- FB metas -->
-    <meta property="og:image" content="https://avrillon.me/<%= require('./img/og-image.jpg') %>" />
+    <meta property="og:image" content="https://avrillon.me/<%= require('./img/og-image.jpg').default %>" />
     <meta
       property="og:description"
       content="Kevin Avrillon - Engineer, freelancer, web lover. Let me help you building amazing things!"
@@ -34,7 +34,7 @@
 
     <!-- Google Tag Manager -->
     <script>
-      (function(w, d, s, l, i) {
+      (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({
           'gtm.start': new Date().getTime(),
@@ -58,7 +58,7 @@
         src="https://www.googletagmanager.com/ns.html?id=GTM-WWXBRGV"
         height="0"
         width="0"
-        style="display:none;visibility:hidden"
+        style="display: none; visibility: hidden;"
       ></iframe
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
